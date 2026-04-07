@@ -1,0 +1,3136 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="ADS320_W12_Deployment_I_files/libs/clipboard/clipboard.min.js"></script>
+<script src="ADS320_W12_Deployment_I_files/libs/quarto-html/tabby.min.js"></script>
+<script src="ADS320_W12_Deployment_I_files/libs/quarto-html/popper.min.js"></script>
+<script src="ADS320_W12_Deployment_I_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="ADS320_W12_Deployment_I_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="ADS320_W12_Deployment_I_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="ADS320_W12_Deployment_I_files/libs/quarto-html/quarto-syntax-highlighting-dark-dbc92dda8186f57fa2e333fbb71d6a9d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="ADS320_W12_Deployment_I_files/libs/quarto-contrib/live-runtime/live-runtime.js" type="module"></script>
+<link href="ADS320_W12_Deployment_I_files/libs/quarto-contrib/live-runtime/live-runtime.css" rel="stylesheet"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.9.36">
+
+  <meta name="author" content="Dr Ruiwu Niu">
+  <meta name="dcterms.date" content="2026-04-07">
+  <title>Deployment (I)</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="ADS320_W12_Deployment_I_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="ADS320_W12_Deployment_I_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    code{white-space: pre-wrap;}
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: min(4vw, 1.5em);}
+    div.column{flex: auto; overflow-x: auto;}
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+    /* CSS for syntax highlighting */
+    html { -webkit-text-size-adjust: 100%; }
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+      }
+    pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+    div.sourceCode
+      { color: #e1e4e8; background-color: #24292e; }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span { color: #e1e4e8; } /* Normal */
+    code span.al { color: #ff5555; font-weight: bold; } /* Alert */
+    code span.an { color: #6a737d; } /* Annotation */
+    code span.at { color: #f97583; } /* Attribute */
+    code span.bn { color: #79b8ff; } /* BaseN */
+    code span.bu { color: #f97583; } /* BuiltIn */
+    code span.cf { color: #f97583; } /* ControlFlow */
+    code span.ch { color: #9ecbff; } /* Char */
+    code span.cn { color: #79b8ff; } /* Constant */
+    code span.co { color: #6a737d; } /* Comment */
+    code span.cv { color: #6a737d; } /* CommentVar */
+    code span.do { color: #6a737d; } /* Documentation */
+    code span.dt { color: #f97583; } /* DataType */
+    code span.dv { color: #79b8ff; } /* DecVal */
+    code span.er { color: #ff5555; text-decoration: underline; } /* Error */
+    code span.ex { color: #f97583; font-weight: bold; } /* Extension */
+    code span.fl { color: #79b8ff; } /* Float */
+    code span.fu { color: #b392f0; } /* Function */
+    code span.im { color: #9ecbff; } /* Import */
+    code span.in { color: #6a737d; } /* Information */
+    code span.kw { color: #f97583; } /* Keyword */
+    code span.op { color: #e1e4e8; } /* Operator */
+    code span.ot { color: #b392f0; } /* Other */
+    code span.pp { color: #f97583; } /* Preprocessor */
+    code span.re { color: #6a737d; } /* RegionMarker */
+    code span.sc { color: #79b8ff; } /* SpecialChar */
+    code span.ss { color: #9ecbff; } /* SpecialString */
+    code span.st { color: #9ecbff; } /* String */
+    code span.va { color: #ffab70; } /* Variable */
+    code span.vs { color: #9ecbff; } /* VerbatimString */
+    code span.wa { color: #ff5555; } /* Warning */
+  </style>
+  <link rel="stylesheet" href="ADS320_W12_Deployment_I_files/libs/revealjs/dist/theme/quarto-a744a2b370710ab7168324db5d172d71.css">
+  <link rel="stylesheet" href="crt-theme.css">
+  <link href="ADS320_W12_Deployment_I_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="ADS320_W12_Deployment_I_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="ADS320_W12_Deployment_I_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="ADS320_W12_Deployment_I_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="ADS320_W12_Deployment_I_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="ADS320_W12_Deployment_I_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+  <script type="module" src="ADS320_W12_Deployment_I_files/libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+  <link href="ADS320_W12_Deployment_I_files/libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
+</head>
+<body class="quarto-dark">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Deployment (I)</h1>
+  <p class="subtitle">ADS320 · Introduction to Data Mining · Week 12</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Dr Ruiwu Niu 
+</div>
+</div>
+</div>
+
+  <p class="date">2026-04-07</p>
+</section>
+<section class="slide level2">
+
+<style>
+/* ====================================================
+   CRT Retro-Futurist Theme — ADS320 W12
+   ==================================================== */
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=Share+Tech+Mono&display=swap');
+
+/* Base reveal theme overrides */
+.reveal {
+  background-color: #0a0a0a;
+  font-family: 'Share Tech Mono', 'Courier New', Courier, monospace;
+  color: #39ff14;
+}
+
+/* CRT scanline overlay */
+.reveal::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 10px;
+  width: 100%; height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.15) 2px,
+    rgba(0, 0, 0, 0.15) 4px
+  );
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Subtle CRT grain / noise via radial gradients */
+.reveal::after {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background-image:
+    radial-gradient(ellipse at 20% 30%, rgba(57,255,20,0.02) 0%, transparent 60%),
+    radial-gradient(ellipse at 80% 70%, rgba(0,229,255,0.015) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 9998;
+}
+
+/* Headings — VT323 phosphor amber */
+.reveal h1,
+.reveal h2 {
+  font-family: 'VT323', monospace;
+  color: #ffb300;
+  text-transform: uppercase;
+  text-shadow: 0 0 10px #ffb300, 0 0 20px rgba(255, 179, 0, 0.5);
+  letter-spacing: 2px;
+  margin-bottom: 0.4em;
+}
+
+.reveal h3 {
+  color: #00e5ff;
+  font-family: 'Share Tech Mono', monospace;
+  text-shadow: 0 0 8px #00e5ff;
+  letter-spacing: 1px;
+}
+
+.reveal h4 {
+  color: #39ff14;
+  font-family: 'Share Tech Mono', monospace;
+  text-shadow: 0 0 4px rgba(57,255,20,0.5);
+}
+
+/* Body text */
+.reveal p,
+.reveal li {
+  color: #39ff14;
+  text-shadow: 0 0 3px rgba(57, 255, 20, 0.4);
+  line-height: 1.5;
+}
+
+/* Slide container border glow */
+.reveal .slides section {
+  border: 1px solid rgba(57, 255, 20, 0.2);
+  box-shadow: 0 0 8px rgba(57, 255, 20, 0.1), inset 0 0 20px rgba(0,0,0,0.3);
+}
+
+/* Tables — green border on black */
+.reveal table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 0.82em;
+  font-family: 'Share Tech Mono', monospace;
+  margin: 0.5em 0;
+}
+
+.reveal table th {
+  background-color: #001a00;
+  color: #ffb300;
+  border: 1px solid #39ff14;
+  padding: 6px 10px;
+  text-shadow: 0 0 6px #ffb300;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.reveal table td {
+  border: 1px solid #1a4d1a;
+  padding: 5px 10px;
+  color: #39ff14;
+  background-color: #030d03;
+}
+
+.reveal table tr:hover td {
+  background-color: #001a00;
+  box-shadow: inset 0 0 4px rgba(57,255,20,0.15);
+}
+
+/* Code blocks — terminal style */
+.reveal pre {
+  background-color: #050a05;
+  border: 1px solid #39ff14;
+  box-shadow: 0 0 8px rgba(57, 255, 20, 0.3);
+  border-radius: 2px;
+  font-size: 0.78em;
+  padding: 0.8em;
+}
+
+.reveal pre code {
+  color: #39ff14;
+  font-family: 'Share Tech Mono', 'Courier New', monospace;
+  background: none;
+  text-shadow: 0 0 2px rgba(57,255,20,0.3);
+}
+
+.reveal code {
+  color: #39ff14;
+  font-family: 'Share Tech Mono', monospace;
+  background-color: #0d1117;
+  padding: 1px 4px;
+  border-radius: 2px;
+}
+
+/* Blockquote — styled as terminal prompt */
+.reveal blockquote {
+  background-color: #040f04;
+  border-left: 3px solid #ffb300;
+  color: #ffb300;
+  font-family: 'Share Tech Mono', monospace;
+  padding: 0.6em 1em;
+  text-shadow: 0 0 6px rgba(255,179,0,0.4);
+  margin: 0.5em 0;
+}
+
+/* Callout boxes */
+.reveal .callout {
+  border-left: 3px solid #ffb300;
+  background-color: #0a0f0a;
+}
+
+/* Footnote / reference line */
+.reveal .footnote,
+.reveal .smallcite {
+  font-size: 0.52em;
+  color: #1a7b1a;
+  position: absolute;
+  bottom: 10px;
+  left: 20px;
+  right: 20px;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+/* Slide number */
+.reveal .slide-number {
+  color: #39ff14;
+  font-family: 'VT323', monospace;
+  font-size: 1.1em;
+}
+
+/* Progress bar */
+.reveal .progress {
+  background: #001a00;
+  color: #39ff14;
+}
+
+.reveal .progress span {
+  background: #39ff14;
+  box-shadow: 0 0 6px #39ff14;
+}
+
+/* Footer */
+.reveal .footer {
+  color: #1a7b1a;
+  font-size: 0.48em;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+/* Title slide overrides */
+.reveal .title-slide h1,
+.reveal .title-slide .title {
+  font-size: 2.8em;
+  color: #ffb300;
+}
+
+/* Custom utility classes */
+.amber { color: #ffb300; font-weight: bold; }
+.cyan  { color: #00e5ff; }
+.green { color: #39ff14; }
+.red-alert { color: #ff3333; text-shadow: 0 0 6px #ff3333; }
+
+/* Terminal box style */
+.terminal-box {
+  background-color: #050a05;
+  border: 1px solid #39ff14;
+  box-shadow: 0 0 8px rgba(57,255,20,0.3);
+  padding: 0.8em 1em;
+  font-family: 'Share Tech Mono', monospace;
+  color: #39ff14;
+  font-size: 0.88em;
+  margin: 0.4em 1.5em;
+}
+
+/* Amber border box */
+.amber-box {
+  background-color: #0f0a00;
+  border: 1px solid #ffb300;
+  box-shadow: 0 0 6px rgba(255,179,0,0.3);
+  padding: 0.8em 1em;
+  color: #ffb300;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.88em;
+  margin: 0.4em 0;
+}
+
+/* Red alert box */
+.red-box {
+  background-color: #0f0000;
+  border: 1px solid #ff3333;
+  box-shadow: 0 0 6px rgba(255,51,51,0.3);
+  padding: 0.8em 1em;
+  color: #ff3333;
+  font-family: 'Share Tech Mono', monospace;
+  font-size: 0.88em;
+  margin: 0.4em 0;
+}
+
+/* Numbered list amber numbers */
+ol > li::marker {
+  color: #ffb300;
+  font-family: 'VT323', monospace;
+  font-size: 1.1em;
+}
+
+/* Unordered list green bullets */
+ul > li::marker {
+  color: #39ff14;
+}
+
+.reveal .slides section.scrollable {
+  padding-left: 0.5em !important;
+}
+
+/* Column divider */
+.columns {
+  gap: 1.5em;
+}
+</style>
+</section>
+<section id="section" class="slide level2 title-slide center" data-background-color="#0a0a0a">
+<h2></h2>
+<!-- IMAGE: CRT terminal boot screen / green phosphor display — search: "CRT terminal green phosphor retro" -->
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 80px; "></p>
+<div style="text-align:center; margin-top:1em;">
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace; font-size:1.1em; letter-spacing:2px;">ADS320 · Introduction to Data Mining</span></p>
+<p><span style="color:#ffb300; font-family:'VT323',monospace; font-size:3em; text-shadow: 0 0 15px #ffb300, 0 0 30px rgba(255,179,0,0.5); display:block; margin:0.2em 0;">WEEK 12: DEPLOYMENT (I)</span></p>
+<p><span style="color:#39ff14; font-family:'Share Tech Mono',monospace; font-size:0.9em;">Dr Ruiwu Niu | Hong Kong Shue Yan University</span></p>
+<p><span style="color:#1a7b1a; font-family:'Share Tech Mono',monospace; font-size:0.8em;">April 2026</span></p>
+</div>
+</section>
+<section id="system-boot-recap-week-11" class="slide level2 scrollable smaller">
+<h2>SYSTEM BOOT: RECAP — WEEK 11</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; LOADING PREVIOUS SESSION DATA…</span></p>
+<p><strong>Week 11 covered: <span style="color:#ffb300;font-weight:bold">Model Evaluation</span></strong></p>
+<ul>
+<li><span style="color:#ffb300;font-weight:bold">Evaluating model results</span> — confusion matrix, ROC-AUC curves, lift charts, and precision-recall trade-offs</li>
+<li><span style="color:#ffb300;font-weight:bold">Review processes</span> — cross-validation strategies (k-fold, stratified), holdout sets, and avoiding data leakage</li>
+<li><span style="color:#ffb300;font-weight:bold">Updating the model</span> — when evaluation metrics trigger retraining decisions; connecting performance thresholds to operational triggers</li>
+<li>The relationship between <strong>evaluation rigour</strong> and <strong>deployment readiness</strong></li>
+<li>Practical worked examples using crime pattern data (Richmond PD case)</li>
+</ul>
+<div class="terminal-box">
+<p><code>STATUS: Evaluation = the gate between modelling and production.</code><br>
+<code>A model that fails evaluation NEVER reaches deployment.</code><br>
+<code>A model that passes evaluation is [deployment-ready].</code></p>
+</div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.6em;">
+<p><em>McCue, C. (2015). Data mining and predictive analysis (2nd ed.). Butterworth-Heinemann. Ch. 8, 12.</em></p>
+</div>
+</section>
+<section id="recap-the-evaluation-gate" class="slide level2 scrollable smaller">
+<h2>RECAP: THE EVALUATION GATE</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<div class="columns">
+<div class="column" style="width:55%;">
+<h3 id="the-deployment-readiness-concept">The Deployment-Readiness Concept</h3>
+<blockquote>
+<p>“A model that passes evaluation is <strong>deployment-ready</strong> — but deployment is not the end of the story.”</p>
+</blockquote>
+<p>Evaluation determines whether a model is <em>worthy</em> of deployment. It does not guarantee continued performance after deployment.</p>
+<p><strong>Key insight:</strong> Evaluation is a <span style="color:#ffb300;font-weight:bold">gate</span>, not a destination.</p>
+<ul>
+<li>Pass the gate → enter deployment</li>
+<li>Fail the gate → return to modelling phase</li>
+<li>Once deployed → monitoring begins</li>
+</ul>
+<p><span style="color:#00e5ff;">Evaluation ≠ a one-time event</span><br>
+<span style="color:#00e5ff;">Monitoring ≡ ongoing evaluation in production</span></p>
+</div><div class="column" style="width:45%;">
+<h3 id="confusion-matrix-quick-reference">Confusion Matrix: Quick Reference</h3>
+<pre><code>         PREDICTED
+         Pos    Neg
+ACTUAL
+Pos   [ TP  |  FN ]
+Neg   [ FP  |  TN ]</code></pre>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Formula</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Accuracy</td>
+<td>(TP+TN) / N</td>
+</tr>
+<tr class="even">
+<td>Precision</td>
+<td>TP / (TP+FP)</td>
+</tr>
+<tr class="odd">
+<td>Recall</td>
+<td>TP / (TP+FN)</td>
+</tr>
+<tr class="even">
+<td>F1 Score</td>
+<td>2 × P×R / (P+R)</td>
+</tr>
+<tr class="odd">
+<td>AUC-ROC</td>
+<td>Area under curve</td>
+</tr>
+</tbody>
+</table>
+<div class="amber-box">
+<p><span style="color:#ffb300;">High AUC at evaluation ≠ high AUC in production — drift changes everything.</span></p>
+</div>
+</div></div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.6em;">
+<p><em>McCue (2015), Ch. 8, 12.</em></p>
+</div>
+</section>
+<section id="loading-agenda" class="slide level2 scrollable smaller">
+<h2>&gt; LOADING AGENDA…</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; INITIALISING ADS320 WEEK 12 SESSION…</span><br>
+<span style="color:#39ff14; font-family:'Share Tech Mono',monospace;">&gt; STATUS: OK | MODULES: 5 | RUNTIME: 140 min</span></p>
+<div class="terminal-box">
+
+<pre style="font-family: 'Courier New', monospace; font-size: 1em; line-height: 1.4;">╔══════════════════════════════════════════════════════════╗
+║          ADS320 W12 — SESSION MENU                       ║
+╠══════════════════════════════════════════════════════════╣
+║  [01]  What Is Deployment?              (15 min)         ║
+║  [02]  Plan Monitoring &amp; Maintenance    (55 min)         ║
+║  [03]  Risk-Based Deployment            (45 min)         ║
+║  [04]  AT2 In-Class Exercise            (40 min)         ║
+║  [05]  Summary &amp; Next Class             (10 min)         ║
+╚══════════════════════════════════════════════════════════╝
+</pre>
+</div>
+<p><span style="color:#ffb300; font-family:'Share Tech Mono',monospace; font-size:1.1em;">&gt; SELECT MODULE TO BEGIN: _</span></p>
+<div style="font-size:0.78em; color:#39ff14; margin-top:0.5em;">
+<p><strong>Learning Outcomes for Today:</strong></p>
+<ol type="1">
+<li>Define deployment in the CRISP-DM framework and explain why it extends beyond “putting a model online”</li>
+<li>Design a monitoring and maintenance plan including drift detection and refresh strategies</li>
+<li>Apply risk-based deployment frameworks to calibrate rollout rigour</li>
+<li>Demonstrate understanding through the AT2 in-class exercise</li>
+</ol>
+</div>
+</section>
+<section id="crisp-dm-deployment-phase" class="slide level2 scrollable smaller">
+<h2>CRISP-DM: DEPLOYMENT PHASE</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><strong>CRISP-DM</strong> = Cross-Industry Standard Process for Data Mining</p>
+<p><span style="color:#ffb300;font-weight:bold;font-size:1.1em;">Deployment = Phase 6</span> — the final and most operationally complex phase:</p>
+<ol type="1">
+<li>Business Understanding</li>
+<li>Data Understanding</li>
+<li>Data Preparation</li>
+<li>Modeling</li>
+<li><span style="color:#00e5ff;">Evaluation ← Last week</span></li>
+<li><strong><span style="color:#ffb300;font-weight:bold;">Deployment ← Today</span></strong></li>
+</ol>
+<p><strong>Deployment ≠ “just putting a model online”</strong></p>
+<p>Deployment encompasses:</p>
+<ul>
+<li><span style="color:#ffb300;font-weight:bold">Planning</span> — deployment strategy, risk assessment</li>
+<li><span style="color:#ffb300;font-weight:bold">Monitoring</span> — performance tracking, drift detection</li>
+<li><span style="color:#ffb300;font-weight:bold">Reporting</span> — stakeholder communication, dashboards</li>
+<li><span style="color:#ffb300;font-weight:bold">Maintenance</span> — retraining, updating, retiring models</li>
+</ul>
+<blockquote>
+<p>“Deployment without maintenance is a ticking clock.”</p>
+</blockquote>
+</div><div class="column" style="width:45%;">
+<!-- IMAGE: CRISP-DM circular process diagram showing deployment phase highlighted — search: "CRISP-DM process model diagram deployment" -->
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="CRISP-DM.png" width="380"></p>
+<figcaption>CRISP-DM Diagram</figcaption>
+</figure>
+</div>
+<div class="terminal-box">
+<p><code>Phase 6 objectives:</code><br>
+<code>• Deploy model to production</code><br>
+<code>• Establish monitoring protocol</code><br>
+<code>• Document for reproducibility</code><br>
+<code>• Plan maintenance cycles</code></p>
+</div>
+</div></div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.3em;">
+<p><em>McCue (2015), Ch. 13, p.&nbsp;267. | Studer et al.&nbsp;(2021). Towards CRISP-ML(Q). https://doi.org/10.20944/preprints202103.0135.v1</em></p>
+</div>
+</section>
+<section id="warning-post-deployment-failures" class="slide level2 smaller">
+<h2>[WARNING] POST-DEPLOYMENT FAILURES</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; SCANNING INCIDENT DATABASE…</span></p>
+<div class="columns">
+<div class="column" style="width:33%;">
+<div class="red-box">
+<p><strong>[ERROR] AMAZON</strong><br>
+<strong>Hiring Algorithm</strong><br>
+<strong>2018</strong></p>
+<hr>
+<p>Trained on historical résumés — majority male. Systematically downgraded CVs containing the word “women’s”. Penalised graduates of all-female colleges.</p>
+<p><strong>Outcome:</strong> Decommissioned after internal discovery. Never used in production decisions.</p>
+<p><em>Root cause: Biased training data + no fairness monitoring post-deployment.</em></p>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="red-box">
+<p><strong>[ERROR] COMPAS</strong><br>
+<strong>Recidivism Model</strong><br>
+<strong>ProPublica 2016</strong></p>
+<hr>
+<p>Used by US courts to predict criminal recidivism. ProPublica analysis found Black defendants were 2× more likely to be falsely labelled high-risk. White defendants more likely to be mislabelled low-risk.</p>
+<p><strong>Outcome:</strong> Retired in several US jurisdictions.</p>
+<p><em>Root cause: No bias monitoring; demographic shift in deployment population.</em></p>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="red-box">
+<p><strong>[ERROR] HEALTHCARE</strong><br>
+<strong>Risk Models</strong><br>
+<strong>COVID-19 2020</strong></p>
+<hr>
+<p>Hundreds of clinical risk models (sepsis, deterioration, readmission) suffered covariate shift during COVID-19. Training distributions from 2015–2019 were incompatible with 2020 patient profiles.</p>
+<p><strong>Outcome:</strong> Many models suspended; retraining required across institutions.</p>
+<p><em>Root cause: No drift monitoring; no scheduled retraining.</em></p>
+</div>
+</div></div>
+<div class="amber-box" style="margin-top:0.5em;">
+<p><span style="color:#ffb300; font-family:'Share Tech Mono',monospace;">&gt; “Without monitoring, deployment is just a delayed failure.”</span></p>
+</div>
+</section>
+<section id="model-lifecycle-live-feed" class="slide level2 scrollable smaller">
+<h2>MODEL LIFECYCLE: LIVE FEED</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; RENDERING MODEL LIFECYCLE STATE MACHINE…</span></p>
+<div class="terminal-box">
+
+<pre style="font-family: 'Courier New', monospace; font-size: 1em; line-height: 1.4;">┌─────────┐     ┌─────────┐     ┌────────────────────────┐
+│  Build  │────▶│ Deploy  │────▶│ Monitor                │
+└─────────┘     └─────────┘     │ (continuous)           │
+     ▲                          └──────────┬─────────────┘
+     │                                     │
+     │           ┌─────────┐    Drift?     │
+     └───────────│ Retrain │◀── YES ───────┘
+                 └────┬────┘               │
+                      │         NO ────────┘
+                      │          (continue monitoring)
+              Performance OK?
+                  YES ↓        NO ↓
+              [Re-deploy]    [Retire] ──▶ [Replace]
+</pre>
+</div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong><span style="color:#ffb300;font-weight:bold;">Monitor</span></strong> — the most critical phase:</p>
+<ul>
+<li>Tracks performance degradation</li>
+<li>Detects data and concept drift</li>
+<li>Triggers retraining decisions</li>
+<li>Generates stakeholder reports</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong><span style="color:#00e5ff;font-weight:bold;">Retrain</span></strong> — four strategies covered today:</p>
+<ol type="1">
+<li>Full retraining</li>
+<li>Incremental learning</li>
+<li>Ensemble updating</li>
+<li>Prior re-balancing</li>
+</ol>
+<p><strong><span style="color:#ff3333;font-weight:bold;">Retire</span></strong> — when no strategy can recover performance</p>
+</div></div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.4em;">
+<p><em>McCue (2015), Ch. 13. | Gama, J., et al.&nbsp;(2014). A survey on concept drift adaptation. ACM Computing Surveys, 46(4). https://doi.org/10.1145/2523813</em></p>
+</div>
+</section>
+<section id="monitoring-definition" class="slide level2 smaller">
+<h2>MONITORING: DEFINITION</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; INITIALISING MONITORING SUBSYSTEM…</span></p>
+<p><strong>Model monitoring</strong> is the systematic, automated tracking of a deployed model’s behaviour, performance, and data inputs over time — with the goal of detecting degradation before it causes business or safety harm.</p>
+<p>Monitoring operates across <span style="color:#ffb300;font-weight:bold;">three layers</span>:</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 38%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Layer</th>
+<th>What It Tracks</th>
+<th>Failure Signals</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span style="color:#ffb300;font-weight:bold;">Data Quality</span></td>
+<td>Missing values, nulls, distribution shifts, feature correlations</td>
+<td>Sudden null spikes, distribution divergence from baseline</td>
+</tr>
+<tr class="even">
+<td><span style="color:#ffb300;font-weight:bold;">Model Performance</span></td>
+<td>Accuracy, AUC, F1, precision, recall, calibration</td>
+<td>Metric drops below threshold; calibration drift</td>
+</tr>
+<tr class="odd">
+<td><span style="color:#ffb300;font-weight:bold;">Operational</span></td>
+<td>Latency, throughput, error rates, uptime, API failures</td>
+<td>Response time &gt; SLA; error rate spike</td>
+</tr>
+</tbody>
+</table>
+<div class="terminal-box">
+<p><code>&gt; WHY MONITORING MATTERS:</code><br>
+<code>Models degrade. Data changes. Business contexts evolve.</code><br>
+<code>A model deployed without monitoring is a liability, not an asset.</code></p>
+</div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.4em;">
+<p><em>McCue (2015), Ch. 13. | Pulicharla, M. R. (2019). Detecting and addressing model drift. WJARR, 3(2). https://doi.org/10.30574/wjarr.2019.3.2.0189</em></p>
+</div>
+</section>
+<section id="drift-detected-two-types" class="slide level2 scrollable smaller">
+<h2>DRIFT DETECTED: TWO TYPES</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; DRIFT SCANNER ACTIVE — ANALYSING INPUT SPACE…</span></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="data-drift-covariate-shift"><span style="color:#ffb300;">Data Drift (Covariate Shift)</span></h3>
+<p><strong>Definition:</strong> The distribution of <em>input features</em> changes after deployment — but the underlying feature→target relationship remains the same.</p>
+<p><strong>Mechanism:</strong><br>
+P(X) changes → P(Y|X) unchanged<br>
+But P(X) change → predictions go wrong</p>
+<p><strong>Real Example:</strong><br>
+A credit default model trained on 2015–2019 spending patterns meets post-COVID (2020) spending behaviour:</p>
+<ul>
+<li>Remote work expenses ↑</li>
+<li>Travel/hospitality ↓ dramatically<br>
+</li>
+<li>Income volatility patterns changed</li>
+</ul>
+<p>The <em>model</em> didn’t change — the <em>world</em> did.</p>
+<div class="terminal-box">
+<p><code>DETECTION: KL divergence, PSI scores,</code><br>
+<code>Population Stability Index on features</code></p>
+</div>
+</div><div class="column" style="width:50%;">
+<h3 id="concept-drift"><span style="color:#00e5ff;">Concept Drift</span></h3>
+<p><strong>Definition:</strong> The relationship between <em>input features and the target</em> fundamentally changes — the model’s learned mapping becomes invalid.</p>
+<p><strong>Mechanism:</strong><br>
+P(Y|X) changes → model’s learned function is wrong<br>
+Even with same inputs, correct outputs differ</p>
+<p><strong>Real Example:</strong><br>
+A churn prediction model trained during economic growth (2015–2019):</p>
+<ul>
+<li>Churn signal: “Customer unhappy with service”</li>
+<li>Post-2020 recession: churn signal includes “Customer can’t afford subscription” — different feature importance entirely</li>
+</ul>
+<div class="terminal-box">
+<p><code>DETECTION: Monitor P(Y|X) directly;</code><br>
+<code>compare prediction distributions over time;</code><br>
+<code>track label distribution in incoming data</code></p>
+</div>
+<p><strong>Types of concept drift:</strong><br>
+- Sudden (abrupt change event) - Gradual (slow evolution) - Recurring (seasonal patterns) - Incremental (slow continuous)</p>
+</div></div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.3em;">
+<p><em>Gama, J., Žliobaitė, I., Bifet, A., Pechenizkiy, M., &amp; Bouchachia, A. (2014). A survey on concept drift adaptation. ACM Computing Surveys, 46(4). https://doi.org/10.1145/2523813</em></p>
+</div>
+</section>
+<section id="case-study-netflix-2020" class="slide level2 scrollable smaller">
+<h2>CASE STUDY: NETFLIX 2020</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<!-- IMAGE: Netflix streaming dark interface 2020 — search: "Netflix streaming dark interface 2020" -->
+<div class="columns">
+<div class="column" style="width:60%;">
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; LOADING CASE STUDY: DRIFT IN ACTION…</span></p>
+<p><strong>Context:</strong> Netflix’s recommendation engine — trained on years of global viewing behaviour — encountered one of the most severe covariate shifts in commercial ML history.</p>
+<p><strong>The Drift Event (March–April 2020):</strong></p>
+<ul>
+<li>COVID-19 lockdowns → user behaviour shifted massively within 2 weeks</li>
+<li><span style="color:#ffb300;font-weight:bold;">Surge in non-English content</span> (South Korean dramas, Spanish thrillers)</li>
+<li><span style="color:#ffb300;font-weight:bold;">Documentary spikes</span> — science, history, true crime</li>
+<li><span style="color:#ffb300;font-weight:bold;">Children’s content</span> dramatically increased (parents working from home)</li>
+<li>Viewing hours per household: +40–60% in many markets</li>
+</ul>
+<p><strong>Model Impact:</strong></p>
+<ul>
+<li>Recommendation precision <span style="color:#ff3333;font-weight:bold;">dropped ~8%</span> within 6 weeks without intervention</li>
+<li>User “discovery” scores declined — more users falling back to search</li>
+<li>Regional models diverged significantly from global model assumptions</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><strong>Netflix’s Response:</strong></p>
+<div class="terminal-box">
+<p><code>1. Accelerated retraining cycles</code><br>
+<code>(weekly → near-daily for</code><br>
+<code>high-drift segments)</code><br>
+<code>2. Ensemble updates with</code><br>
+<code>COVID-period data weighted ↑</code><br>
+<code>3. Regional model differentiation</code><br>
+<code>4. Temporary manual curation</code><br>
+<code>to bridge the gap</code></p>
+</div>
+<div class="amber-box">
+<p><strong>Key Lesson:</strong></p>
+<p><span style="color:#ffb300;font-weight:bold;">Continuous monitoring caught the drift early.</span></p>
+<p>Without monitoring, Netflix would have continued serving recommendations calibrated to a world that no longer existed — eroding user trust and retention.</p>
+</div>
+<p><strong>Type of drift:</strong> Primarily <span style="color:#00e5ff;">data drift</span> — user preference distributions shifted; the underlying recommendation logic (similar users like similar content) remained valid.</p>
+</div></div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.3em;">
+<p><em>Concept drift case study. | Gama et al.&nbsp;(2014). https://doi.org/10.1145/2523813</em></p>
+</div>
+</section>
+<section id="monitoring-protocol-6-steps" class="slide level2 smaller">
+<h2>MONITORING PROTOCOL: 6 STEPS</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; EXECUTING MONITORING PROTOCOL SETUP…</span></p>
+<ol type="1">
+<li><p><strong><span style="color:#ffb300;font-weight:bold;">Define objectives</span></strong> — Who reads the monitoring output? What decisions does it drive?<br>
+→ Stakeholder map: data scientist (technical), business owner (outcomes), regulator (compliance)</p></li>
+<li><p><strong><span style="color:#ffb300;font-weight:bold;">Establish baseline metrics</span></strong> — Record performance at the moment of deployment. This is your reference point.<br>
+→ AUC = 0.91, F1 = 0.87, avg. latency = 45ms at launch date</p></li>
+<li><p><strong><span style="color:#ffb300;font-weight:bold;">Select relevant metrics</span></strong> — Three tiers: system metrics + model metrics + business metrics<br>
+→ Not every metric is relevant for every use case</p></li>
+<li><p><strong><span style="color:#ffb300;font-weight:bold;">Set thresholds and alerts</span></strong> — Absolute thresholds, relative thresholds, and statistical process control<br>
+→ “AUC &lt; 0.85” or “10% drop from baseline” triggers investigation</p></li>
+<li><p><strong><span style="color:#ffb300;font-weight:bold;">Define monitoring architecture</span></strong> — Batch vs.&nbsp;real-time vs.&nbsp;hybrid<br>
+→ Determined by use case risk level and available infrastructure</p></li>
+<li><p><strong><span style="color:#ffb300;font-weight:bold;">Design alerting and escalation plan</span></strong> — Who gets alerted? In what timeframe? What is the escalation path?<br>
+→ PagerDuty for critical alerts; weekly digest for routine metrics</p></li>
+</ol>
+<div class="terminal-box">
+<p><code>&gt; CRITICAL PRINCIPLE: Monitoring plans must be agreed BEFORE deployment —</code><br>
+<code>not retrofitted after a problem is discovered.</code></p>
+</div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.3em;">
+<p><em>Evidently AI. (2025). Model monitoring for ML in production. https://www.evidentlyai.com/ml-in-production/model-monitoring | McCue (2015), Ch. 13.</em></p>
+</div>
+</section>
+<section id="metrics-matrix" class="slide level2 scrollable smaller">
+<h2>METRICS MATRIX</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; LOADING METRICS REGISTRY…</span></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 26%">
+<col style="width: 34%">
+<col style="width: 22%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Category</th>
+<th>Metric Examples</th>
+<th>Monitoring Frequency</th>
+<th>Example Tool</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span style="color:#ffb300;font-weight:bold;">System</span></td>
+<td>Latency (P50/P95/P99), throughput (req/sec), error rate, uptime, memory/CPU</td>
+<td>Real-time</td>
+<td>Prometheus + Grafana</td>
+</tr>
+<tr class="even">
+<td><span style="color:#ffb300;font-weight:bold;">Model Performance</span></td>
+<td>Accuracy, F1, AUC-ROC, precision, recall, calibration, log loss</td>
+<td>Daily / Per-batch</td>
+<td>MLflow, Weights &amp; Biases</td>
+</tr>
+<tr class="odd">
+<td><span style="color:#ffb300;font-weight:bold;">Data Quality</span></td>
+<td>Feature distributions vs.&nbsp;baseline, null/missing rates, correlation shifts, PSI</td>
+<td>Daily / Weekly</td>
+<td>Evidently AI, Great Expectations</td>
+</tr>
+<tr class="even">
+<td><span style="color:#ffb300;font-weight:bold;">Business Impact</span></td>
+<td>Decision outcomes, approval rates, revenue impact, customer satisfaction</td>
+<td>Weekly / Monthly</td>
+<td>Custom dashboards, Tableau</td>
+</tr>
+</tbody>
+</table>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Selecting the right metrics:</strong></p>
+<ul>
+<li>Start with what matters <em>most</em> to the business</li>
+<li>Add technical metrics to enable debugging</li>
+<li>Don’t track everything — alert fatigue degrades response quality</li>
+<li><span style="color:#00e5ff;">PSI (Population Stability Index)</span>: standard data drift metric<br>
+PSI &lt; 0.1 → stable | 0.1–0.25 → investigate | &gt; 0.25 → significant drift</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<div class="amber-box">
+<p><strong>Common Mistake:</strong></p>
+<p>Teams monitor only model accuracy, missing data quality issues upstream. By the time accuracy degrades, the root cause (feature distribution shift) has been present for weeks.</p>
+<p><span style="color:#ffb300;font-weight:bold;">Monitor data → monitor model → monitor business.</span></p>
+</div>
+</div></div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.3em;">
+<p><em>Evidently AI (2025). https://www.evidentlyai.com/ml-in-production/model-monitoring | Pulicharla (2019). https://doi.org/10.30574/wjarr.2019.3.2.0189</em></p>
+</div>
+</section>
+<section id="threshold-calibration" class="slide level2 scrollable smaller">
+<h2>THRESHOLD CALIBRATION</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; CALIBRATING ALERT THRESHOLDS…</span></p>
+<p><strong>Three threshold approaches:</strong></p>
+<p><strong>1. <span style="color:#ffb300;font-weight:bold;">Absolute Thresholds</span></strong><br>
+Fixed value: if metric drops below X → alert<br>
+Example: <code>if AUC &lt; 0.85 → ALERT</code><br>
+Simple but context-insensitive</p>
+<p><strong>2. <span style="color:#ffb300;font-weight:bold;">Relative Thresholds</span></strong><br>
+Percentage change from baseline<br>
+Example: <code>if accuracy drops &gt;10% from launch → ALERT</code><br>
+Better for gradual drift detection</p>
+<p><strong>3. <span style="color:#ffb300;font-weight:bold;">Statistical Process Control (SPC)</span></strong><br>
+Control charts (Shewhart, CUSUM, EWMA)<br>
+Alert when metric crosses <span style="color:#00e5ff;">3σ control limits</span><br>
+Best for detecting drift vs.&nbsp;natural variance<br>
+Used in manufacturing quality control — now applied to ML monitoring</p>
+<div class="terminal-box">
+<p><code>RULE: Thresholds must be set at</code><br>
+<code>deployment time, not after first alert.</code><br>
+<code>Retrospective threshold-setting is</code><br>
+<code>outcome bias.</code></p>
+</div>
+</div><div class="column" style="width:45%;">
+<div class="amber-box">
+<p><strong>Real Example:</strong></p>
+<h3 id="vent.io-clinical-ml-model-ucsd-health">Vent.io Clinical ML Model (UCSD Health)</h3>
+<p><strong>Deployment AUC:</strong> 0.908<br>
+<strong>Threshold set:</strong> AUC ≥ 0.85</p>
+<p><strong>External validation (MIMIC-IV):</strong><br>
+AUC = 0.73 &lt; threshold → <strong>ALERT TRIGGERED</strong></p>
+<p><strong>Automated response:</strong><br>
+PCCP protocol initiated → fine-tuning on new data</p>
+<p><strong>Post-fine-tuning AUC:</strong> 0.873 ✓<br>
+<em>(above threshold — monitoring continues)</em></p>
+<p>This demonstrates a <span style="color:#ffb300;font-weight:bold;">pre-defined threshold</span> enabling automated response — no human had to notice the drop before action was taken.</p>
+</div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.4em;">
+<p><em>Lam et al.&nbsp;(2024). JAMIA Open, 7(4), ooae141. https://doi.org/10.1093/jamiaopen/ooae141</em></p>
+</div>
+</div></div>
+</section>
+<section id="architecture-batch-vs-real-time" class="slide level2 smaller">
+<h2>ARCHITECTURE: BATCH vs REAL-TIME</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<!-- IMAGE: Grafana dashboard real-time monitoring dark theme — search: "Grafana dashboard real-time monitoring dark theme" -->
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; SELECTING MONITORING ARCHITECTURE…</span></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 38%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Dimension</th>
+<th><span style="color:#ffb300;font-weight:bold;">Batch Monitoring</span></th>
+<th><span style="color:#00e5ff;font-weight:bold;">Real-Time Monitoring</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Frequency</td>
+<td>Daily / weekly / monthly</td>
+<td>Milliseconds to seconds</td>
+</tr>
+<tr class="even">
+<td>Infrastructure cost</td>
+<td>Low — scheduled jobs</td>
+<td>High — streaming pipelines</td>
+</tr>
+<tr class="odd">
+<td>Latency tolerance</td>
+<td>High</td>
+<td>Very low</td>
+</tr>
+<tr class="even">
+<td>Alerting speed</td>
+<td>Slow</td>
+<td>Immediate</td>
+</tr>
+<tr class="odd">
+<td>Implementation complexity</td>
+<td>Low</td>
+<td>High</td>
+</tr>
+<tr class="even">
+<td>Suitable for</td>
+<td>Churn, HR screening, credit models</td>
+<td>Fraud detection, clinical AI, ad bidding</td>
+</tr>
+<tr class="odd">
+<td>Example</td>
+<td>Quarterly churn model review</td>
+<td>JPMorgan Chase real-time fraud detection</td>
+</tr>
+<tr class="even">
+<td>Tools</td>
+<td>Cron + Python + MLflow</td>
+<td>Kafka + Flink + Prometheus</td>
+</tr>
+</tbody>
+</table>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>When to choose BATCH:</strong></p>
+<ul>
+<li>Business decisions are not time-critical</li>
+<li>Cost is a primary constraint</li>
+<li>Model outputs are aggregated (e.g., weekly reports)</li>
+<li>Team has limited MLOps infrastructure</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>When to choose REAL-TIME:</strong></p>
+<ul>
+<li>Errors have immediate consequences (fraud, clinical)</li>
+<li>Model feeds real-time user-facing features</li>
+<li>SLA requirements demand sub-second responses</li>
+<li>Regulatory requirements mandate immediate audit trails</li>
+</ul>
+</div></div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.3em;">
+<p><em>Evidently AI (2025). https://www.evidentlyai.com/ml-in-production/model-monitoring</em></p>
+</div>
+</section>
+<section id="toolchain-monitoring-stack" class="slide level2 scrollable smaller">
+<h2>TOOLCHAIN: MONITORING STACK</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; SCANNING AVAILABLE MONITORING TOOLS…</span></p>
+<div class="columns">
+<div class="column" style="width:33%;">
+<div class="terminal-box">
+<p><strong><span style="color:#ffb300;font-weight:bold;">Prometheus + Grafana</span></strong></p>
+<p>Open-source. Industry standard.</p>
+<ul>
+<li>System + model metrics</li>
+<li>Real-time dashboards</li>
+<li>Alertmanager integration</li>
+<li>Kubernetes-native</li>
+<li>Free / self-hosted</li>
+</ul>
+<p><em>Best for: teams with DevOps infrastructure</em></p>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="terminal-box">
+<p><strong><span style="color:#ffb300;font-weight:bold;">AWS SageMaker Model Monitor</span></strong></p>
+<p>Cloud-native. Managed service.</p>
+<ul>
+<li>Automated baseline comparison</li>
+<li>Data quality + model quality monitors</li>
+<li>Bias drift detection (Clarify)</li>
+<li>Built-in alert to CloudWatch</li>
+<li>Paid / cloud-only</li>
+</ul>
+<p><em>Best for: AWS-native ML pipelines</em></p>
+</div>
+</div><div class="column" style="width:33%;">
+<div class="terminal-box">
+<p><strong><span style="color:#ffb300;font-weight:bold;">Evidently AI</span></strong></p>
+<p>Open-source. ML-focused.</p>
+<ul>
+<li>Drift detection reports</li>
+<li>Data quality dashboards</li>
+<li>Model performance reports</li>
+<li>HTML + JSON output</li>
+<li>Free / self-hosted or cloud</li>
+</ul>
+<p><em>Best for: data science teams needing ML-specific reports fast</em></p>
+</div>
+</div></div>
+<p><strong>Minimal monitoring loop — Python:</strong></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb2"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href=""></a><span class="co"># Minimal monitoring loop — production pattern</span></span>
+<span id="cb2-2"><a href=""></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
+<span id="cb2-3"><a href=""></a><span class="im">import</span> logging</span>
+<span id="cb2-4"><a href=""></a>logging.basicConfig(level<span class="op">=</span>logging.INFO)</span>
+<span id="cb2-5"><a href=""></a></span>
+<span id="cb2-6"><a href=""></a><span class="kw">def</span> monitor_batch(model, X_new, y_true, threshold<span class="op">=</span><span class="fl">0.85</span>):</span>
+<span id="cb2-7"><a href=""></a>    <span class="co">"""Monitor a single batch and trigger retraining if needed."""</span></span>
+<span id="cb2-8"><a href=""></a>    y_pred <span class="op">=</span> model.predict(X_new)</span>
+<span id="cb2-9"><a href=""></a>    acc <span class="op">=</span> accuracy_score(y_true, y_pred)</span>
+<span id="cb2-10"><a href=""></a>    logging.info(<span class="ss">f"Batch accuracy: </span><span class="sc">{</span>acc<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb2-11"><a href=""></a>    <span class="cf">if</span> acc <span class="op">&lt;</span> threshold:</span>
+<span id="cb2-12"><a href=""></a>        logging.warning(<span class="ss">f"ALERT: accuracy </span><span class="sc">{</span>acc<span class="sc">:.4f}</span><span class="ss"> &lt; threshold </span><span class="sc">{</span>threshold<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb2-13"><a href=""></a>        trigger_retraining()  <span class="co"># → initiates retraining pipeline</span></span>
+<span id="cb2-14"><a href=""></a>    <span class="cf">return</span> acc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.3em;">
+<p><em>Evidently AI (2025). https://www.evidentlyai.com/ml-in-production/model-monitoring</em></p>
+</div>
+</section>
+<section id="exercise_01-monitoring-design" class="slide level2 scrollable smaller">
+<h2>[EXERCISE_01] MONITORING DESIGN</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<div class="terminal-box" style="font-size:1em;">
+
+<pre style="font-family: 'Courier New', monospace; font-size: 1em; line-height: 1.4;">
+╔══════════════════════════════════════════════════════════════╗
+║  [EXERCISE_01] IN-CLASS: MONITORING DESIGN (5 minutes)       ║
+╠══════════════════════════════════════════════════════════════╣
+║                                                              ║
+║  SCENARIO:                                                   ║
+║  A bank deployed a loan default prediction model             ║
+║  6 months ago.                                               ║
+║                                                              ║
+║  Training data period: 2022–2024                             ║
+║  Deployment date: October 2025                               ║
+║  Current date: April 2026                                    ║
+║  Context: Interest rates have risen sharply over             ║
+║  the past 12 months; borrower demographics shifting.         ║
+║                                                              ║
+║  YOUR TASK (5 minutes, individual):                          ║
+║                                                              ║
+║  &gt; 1. Identify 3 KEY METRICS to track for this model.        ║
+║       (At least one from each monitoring layer.)             ║
+║                                                              ║
+║  &gt; 2. Set 2 ALERT THRESHOLDS with justification.             ║
+║       (Specify: absolute or relative? Why?)                  ║
+║                                                              ║
+║  &gt; 3. Choose: BATCH or REAL-TIME monitoring?                 ║
+║       Justify your choice in 2 sentences.                    ║
+║                                                              ║
+║  &gt; Discuss with neighbour for 2 minutes after.               ║
+╚══════════════════════════════════════════════════════════════╝
+</pre>
+</div>
+<div style="font-size:0.7em; color:#00e5ff; margin-top:0.4em;">
+<p><em>Hint: Consider the type of drift most likely in this scenario. Is it data drift or concept drift? Both? How does that affect your metric selection?</em></p>
+</div>
+</section>
+<section id="refresh-protocol-4-strategies" class="slide level2 smaller">
+<h2>REFRESH PROTOCOL: 4 STRATEGIES</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; LOADING MODEL REFRESH STRATEGIES…</span></p>
+<p><strong>When monitoring detects drift, choose the appropriate refresh strategy:</strong></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 35%">
+<col style="width: 17%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Strategy</th>
+<th>When to Use</th>
+<th>Cost</th>
+<th>Risk</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span style="color:#ffb300;font-weight:bold;">Full Retraining</span></td>
+<td>Severe real drift; domain fundamentally changed</td>
+<td>High</td>
+<td>Low — clean restart</td>
+</tr>
+<tr class="even">
+<td><span style="color:#ffb300;font-weight:bold;">Incremental Learning</span></td>
+<td>Streaming environments; continuous data arrival</td>
+<td>Medium</td>
+<td>Medium — catastrophic forgetting risk</td>
+</tr>
+<tr class="odd">
+<td><span style="color:#ffb300;font-weight:bold;">Ensemble Updating</span></td>
+<td>Gradual drift; smooth transition needed</td>
+<td>Medium</td>
+<td>Low — no abrupt replacement</td>
+</tr>
+<tr class="even">
+<td><span style="color:#ffb300;font-weight:bold;">Prior Re-balancing</span></td>
+<td>Virtual drift only; P(X) changes, P(Y|X) stable</td>
+<td>Very Low</td>
+<td>Very Low — cheapest option</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Decision logic:</strong></p>
+<div class="terminal-box">
+<pre><code>IF severe real drift AND incremental cannot recover:
+  → FULL RETRAINING
+ELIF streaming/continuous data:
+  → INCREMENTAL LEARNING
+ELIF gradual drift AND stability preferred:
+  → ENSEMBLE UPDATING
+ELIF only input distribution changed (virtual drift):
+  → PRIOR RE-BALANCING</code></pre>
+</div>
+<p><strong>Key principle:</strong> Choose the <span style="color:#ffb300;font-weight:bold;">least costly strategy</span> that can resolve the drift — escalate only if it fails.</p>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.3em;">
+<p><em>McCue (2015), Ch. 13. | Gama et al.&nbsp;(2014). ACM Computing Surveys. https://doi.org/10.1145/2523813</em></p>
+</div>
+</section>
+<section id="strategy_01-full-retraining" class="slide level2 scrollable smaller">
+<h2>STRATEGY_01: FULL RETRAINING</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; EXECUTING: FULL RETRAINING PROTOCOL</span></p>
+<p><strong>Trigger Conditions — ALL THREE must be satisfied:</strong></p>
+<div class="red-box">
+<pre><code>CONDITION 1: Performance below defined threshold
+             (e.g., AUC &lt; 0.82, sustained for &gt;2 monitoring cycles)
+CONDITION 2: Incremental update / ensemble update cannot recover performance
+             (fallback strategies attempted and failed)
+CONDITION 3: Domain has fundamentally changed
+             (new features needed, label definition changed, population shifted)
+→ ACTION: FULL RETRAINING INITIATED</code></pre>
+</div>
+<p><strong>Full Retraining Pipeline:</strong></p>
+<div class="terminal-box">
+<pre><code>[Collect New Data] → [Preprocess &amp; Validate] → [Full Retrain]
+       → [Evaluate on Holdout] → [A/B Test vs. Current Model]
+       → [Shadow Run (optional, high-stakes)] → [Deploy New Model]
+       → [Archive Old Model Version] → [Reset Monitoring Baseline]</code></pre>
+</div>
+<p><strong>Real Example — McCue (2015), Richmond PD Patrol Model:</strong></p>
+<p>The Richmond Police Department crime prediction model was seasonally retrained on a scheduled cadence:</p>
+<ul>
+<li><span style="color:#ffb300;">Summer / winter cycle</span> — weather affects patrol patterns and crime geography</li>
+<li><span style="color:#ffb300;">School-in / school-out cycle</span> — juvenile crime patterns shift dramatically in summer</li>
+</ul>
+<p><em>Full retraining was scheduled proactively — not triggered reactively. This is best practice for models with known seasonal patterns.</em></p>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.3em;">
+<p><em>McCue (2015), Ch. 13.</em></p>
+</div>
+</section>
+<section id="strategy_02-incremental-learning" class="slide level2 scrollable smaller">
+<h2>STRATEGY_02: INCREMENTAL LEARNING</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; EXECUTING: INCREMENTAL LEARNING PROTOCOL</span></p>
+<p><strong>Definition:</strong> Update the model continuously in small batches as new data arrives — without performing a complete retraining from scratch.</p>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><strong>Mechanism:</strong></p>
+<ul>
+<li>New data arrives (stream or micro-batch)</li>
+<li>Model parameters updated incrementally</li>
+<li>No need to retain or reprocess historical data</li>
+<li>Especially suitable for: <span style="color:#00e5ff;">clickstream, sensor data, financial ticks, user interactions</span></li>
+</ul>
+<p><strong>Suitable environments:</strong></p>
+<ul>
+<li>Streaming platforms (real-time recommendation)</li>
+<li>IoT sensor networks</li>
+<li>Fraud detection with continuous transactions</li>
+<li>Online advertising bidding systems</li>
+</ul>
+<p><strong><span style="color:#ff3333;font-weight:bold;">Critical Risk: Catastrophic Forgetting</span></strong></p>
+<p>When only recent data is used, the model may “forget” patterns from older but still-valid historical data — especially problematic for rare events (fraud, rare diseases).</p>
+<p><strong>Mitigation: Elastic Weight Consolidation (EWC)</strong></p>
+<ul>
+<li>Adds a regularisation penalty to prevent old knowledge from being overwritten</li>
+<li>Slows learning rate for parameters that were important for past tasks</li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div class="terminal-box">
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb6"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href=""></a><span class="co"># Conceptual: incremental update</span></span>
+<span id="cb6-2"><a href=""></a><span class="co"># (sklearn partial_fit pattern)</span></span>
+<span id="cb6-3"><a href=""></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> SGDClassifier</span>
+<span id="cb6-4"><a href=""></a></span>
+<span id="cb6-5"><a href=""></a>model <span class="op">=</span> SGDClassifier(loss<span class="op">=</span><span class="st">'log_loss'</span>)</span>
+<span id="cb6-6"><a href=""></a></span>
+<span id="cb6-7"><a href=""></a><span class="cf">for</span> batch <span class="kw">in</span> data_stream:</span>
+<span id="cb6-8"><a href=""></a>    X_batch, y_batch <span class="op">=</span> batch</span>
+<span id="cb6-9"><a href=""></a>    model.partial_fit(</span>
+<span id="cb6-10"><a href=""></a>        X_batch,</span>
+<span id="cb6-11"><a href=""></a>        y_batch,</span>
+<span id="cb6-12"><a href=""></a>        classes<span class="op">=</span>[<span class="dv">0</span>, <span class="dv">1</span>]</span>
+<span id="cb6-13"><a href=""></a>    )</span>
+<span id="cb6-14"><a href=""></a>    monitor_batch(model, X_batch, y_batch)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<div class="amber-box" style="margin-top:0.6em;">
+<p><strong>Real Example:</strong></p>
+<p><strong>Amazon e-commerce</strong> — product embedding models updated nightly from new purchase data. Incremental updates ensure recommendations reflect recent trends without discarding years of purchase history.</p>
+</div>
+</div></div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.3em;">
+<p><em>Gama et al.&nbsp;(2014). ACM Computing Surveys, 46(4). https://doi.org/10.1145/2523813</em></p>
+</div>
+</section>
+<section id="strategy_03-ensemble-updating" class="slide level2 scrollable smaller">
+<h2>STRATEGY_03: ENSEMBLE UPDATING</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; EXECUTING: ENSEMBLE UPDATING PROTOCOL</span></p>
+<p><strong>Mechanism:</strong></p>
+<p>When drift is gradual, rather than replacing the current model entirely, add a new model (trained on recent data) to an ensemble — and progressively reduce the weight of older models.</p>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><strong>How it works:</strong></p>
+<div class="terminal-box">
+<pre><code>INITIAL STATE:
+  Ensemble = [Model_v1 (w=1.0)]
+
+DRIFT DETECTED (gradual):
+  Train Model_v2 on recent data
+  Ensemble = [Model_v1 (w=0.6),
+              Model_v2 (w=0.4)]
+
+CONTINUED DRIFT:
+  Ensemble = [Model_v1 (w=0.3),
+              Model_v2 (w=0.7)]
+
+EVENTUALLY:
+  Retire Model_v1
+  Ensemble = [Model_v2 (w=1.0)]
+  (or add Model_v3...)</code></pre>
+</div>
+<p><strong>Advantages:</strong></p>
+<ul>
+<li><span style="color:#ffb300;font-weight:bold;">Smooth transition</span> — no abrupt model replacement; no “cliff” in performance</li>
+<li>Preserves historical signal during transition</li>
+<li>Can be rolled back easily by adjusting weights</li>
+<li>Reduces risk of new-model failure causing production incidents</li>
+</ul>
+<p><strong>Disadvantage:</strong> Complexity increases; maintaining multiple model versions adds operational overhead.</p>
+</div><div class="column" style="width:45%;">
+<!-- IMAGE: Machine learning ensemble model weighted combination diagram — search: "machine learning ensemble model weighted combination diagram" -->
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="ensemble.png" width="620"></p>
+<figcaption>Ensemble Model Diagram</figcaption>
+</figure>
+</div>
+<div class="amber-box" style="margin-top:0.5em;">
+<p><strong>Real Example:</strong></p>
+<p><strong>ECMWF (European Centre for Medium-Range Weather Forecasts)</strong></p>
+<p>Global weather forecasting uses large multi-model ensembles. When seasonal patterns shift (e.g., El Niño onset), newer models capturing current atmospheric patterns receive higher weights while older seasonal baselines are gradually phased out — without disrupting the operational forecast chain.</p>
+</div>
+</div></div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.3em;">
+<p><em>Gama et al.&nbsp;(2014). ACM Computing Surveys. https://doi.org/10.1145/2523813</em></p>
+</div>
+</section>
+<section id="strategy_04-prior-re-balancing" class="slide level2 scrollable smaller">
+<h2>STRATEGY_04: PRIOR RE-BALANCING</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; EXECUTING: PRIOR RE-BALANCING PROTOCOL</span></p>
+<p><strong>Mechanism — addressing Virtual Drift only:</strong></p>
+<div class="terminal-box">
+<pre><code>VIRTUAL DRIFT = Input distribution changes (P(X) shifts)
+                BUT feature→target relationship is UNCHANGED (P(Y|X) stable)
+
+In this case: model's LEARNED WEIGHTS remain valid
+              Only the CLASS PRIORS / WEIGHTS need adjustment
+
+SOLUTION: Re-balance class weights or posterior probabilities
+          WITHOUT retraining the model's core parameters</code></pre>
+</div>
+<p><strong>When this applies:</strong></p>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><strong>Credit Scoring — Economic Expansion Example:</strong></p>
+<ul>
+<li>Model trained 2019: 30% high-income applicants, 70% low-income</li>
+<li>Economy improves 2022: 50% high-income applicants, 50% low-income</li>
+<li>The <em>signal</em> (what predicts default) hasn’t changed</li>
+<li>The <em>proportion</em> of applicants in each class has changed</li>
+<li><span style="color:#ffb300;font-weight:bold;">Solution:</span> Adjust class weights to reflect new application pool distribution</li>
+<li>No retraining of model parameters needed</li>
+</ul>
+<p><strong>Result:</strong> Correct calibration restored at minimal cost</p>
+</div><div class="column" style="width:45%;">
+<div class="amber-box">
+<p><strong>Why this is the BEST first option:</strong></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Attribute</th>
+<th>Prior Re-balancing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Compute cost</td>
+<td>Near zero</td>
+</tr>
+<tr class="even">
+<td>Time to implement</td>
+<td>Hours</td>
+</tr>
+<tr class="odd">
+<td>Risk</td>
+<td>Very low</td>
+</tr>
+<tr class="even">
+<td>Requires new labels?</td>
+<td>No</td>
+</tr>
+<tr class="odd">
+<td>Requires retraining?</td>
+<td>No</td>
+</tr>
+</tbody>
+</table>
+<p><span style="color:#ffb300;font-weight:bold;">Always try prior re-balancing FIRST when only the input distribution has shifted — escalate to full retraining only if this fails.</span></p>
+</div>
+</div></div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.3em;">
+<p><em>McCue (2015), Ch. 13. | Gama et al.&nbsp;(2014). https://doi.org/10.1145/2523813</em></p>
+</div>
+</section>
+<section id="system_halt-retirement-criteria" class="slide level2 scrollable smaller">
+<h2>[SYSTEM_HALT] RETIREMENT CRITERIA</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; RETIREMENT ASSESSMENT PROTOCOL INITIATED…</span></p>
+<div class="red-box">
+
+<pre style="font-family: 'Courier New', monospace; font-size: 1em; line-height: 1.4;">
+╔══════════════════════════════════════════════════════════════╗
+║  [SYSTEM_HALT] RETIREMENT CRITERIA — THREE-CONDITION RULE    ║
+╠══════════════════════════════════════════════════════════════╣
+║                                                              ║
+║  X  CONDITION 1: Performance persistently below threshold    ║
+║     (e.g., AUC &lt; 0.80 for 3+ consecutive monitoring cycles)  ║
+║                                                              ║
+║  X  CONDITION 2: All refresh strategies attempted and failed ║
+║     (prior re-balancing → ensemble update → incremental      ║
+║      → full retrain — none recovered performance)            ║
+║                                                              ║
+║  X  CONDITION 3: Domain has fundamentally changed            ║
+║     (new regulatory framework, feature unavailable,          ║
+║      business objective redefined)                           ║
+║                                                              ║
+║  ─────────────────────────────────────────────────────────   ║
+║  → ACTION: RETIRE MODEL → INITIATE REPLACEMENT PIPELINE      ║
+╚══════════════════════════════════════════════════════════════╝
+</pre>
+</div>
+<p><strong>Retirement Checklist:</strong></p>
+<ol type="1">
+<li><span style="color:#ffb300;">Document model lineage</span> — full audit trail of versions, training data, performance history</li>
+<li><span style="color:#ffb300;">Archive training data</span> — with version tags and data provenance records</li>
+<li><span style="color:#ffb300;">Stakeholder sign-off</span> — business owner, legal/compliance, data science lead</li>
+<li><span style="color:#ffb300;">Rollback plan</span> — can the previous model be re-activated if needed?</li>
+<li><span style="color:#ffb300;">Communication plan</span> — internal teams + affected external parties notified</li>
+</ol>
+<div class="amber-box">
+<p><strong>Real Example: COMPAS Recidivism Tool</strong><br>
+After ProPublica’s 2016 fairness analysis and subsequent academic scrutiny, the COMPAS recidivism scoring tool was retired from use in several US jurisdictions — including decisions in Wisconsin and New Jersey courts. Retirement required legislative action, court orders, and public documentation of model failures.</p>
+</div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.3em;">
+<p><em>McCue (2015), Ch. 13.</em></p>
+</div>
+</section>
+<section id="lifecycle-complete-state-machine" class="slide level2 scrollable smaller">
+<h2>LIFECYCLE: COMPLETE STATE MACHINE</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; RENDERING COMPLETE LIFECYCLE STATE MACHINE…</span></p>
+<div class="terminal-box">
+
+<pre style="font-family: 'Courier New', monospace; font-size: 1em; line-height: 1.4;">
+╔══════════╗    ╔══════════╗    ╔════════════════════════════════╗
+║  [Build] ║───▶║ [Deploy] ║───▶║ [Monitor]  (continuous loop)   ║
+╚══════════╝    ╚══════════╝    ╚════════════┬═══════════════════╝
+ Data Scientist   MLOps Eng.                 │
+ Business Owner   IT Ops                     ▼
+                                      Drift detected?
+                                      ┌────────────────────────┐
+                                      │ NO  → Continue         │
+                                      │ YES ▼                  │
+                                      │  Type of drift?        │
+                                      │  Virtual → [Re-balance]│
+                                      │  Gradual → [Ensemble]  │
+                                      │  Streaming→[Incremental│
+                                      │  Severe  → [Retrain]   │
+                                      └──────────┬─────────────┘
+                                                 ▼
+                                    Performance recovers?
+                                    YES ↓              NO ↓
+                               [Re-deploy]          [Retire]──▶[Replace]
+                               Data Scientist       Business Owner
+                               MLOps Eng.           + Legal/Compliance
+</pre>
+</div>
+<p><strong>Typical timelines by stage:</strong></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 50%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Stage</th>
+<th>Typical Duration</th>
+<th>Key Role</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Build (initial)</td>
+<td>2–8 weeks</td>
+<td>Data Scientist</td>
+</tr>
+<tr class="even">
+<td>Deployment</td>
+<td>1–4 weeks</td>
+<td>MLOps Engineer</td>
+</tr>
+<tr class="odd">
+<td>Monitoring cycle</td>
+<td>Continuous / daily</td>
+<td>MLOps + Data Scientist</td>
+</tr>
+<tr class="even">
+<td>Retraining decision</td>
+<td>Days to weeks after alert</td>
+<td>Data Scientist + Business Owner</td>
+</tr>
+<tr class="odd">
+<td>Retirement decision</td>
+<td>Weeks (requires sign-off)</td>
+<td>Business Owner + Legal</td>
+</tr>
+</tbody>
+</table>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.3em;">
+<p><em>McCue (2015), Ch. 13. | Gama et al.&nbsp;(2014). https://doi.org/10.1145/2523813</em></p>
+</div>
+</section>
+<section id="audit-log-governance" class="slide level2 scrollable smaller">
+<h2>AUDIT LOG: GOVERNANCE</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; ACCESSING GOVERNANCE MODULE…</span></p>
+<p><strong>Why documentation and governance matter:</strong></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong><span style="color:#ffb300;font-weight:bold;">Reproducibility</span></strong></p>
+<p>Can you recreate exact model results 2 years after deployment? This matters for:</p>
+<ul>
+<li>Regulatory audits (what decision was made and why?)</li>
+<li>Debugging unexpected model behaviour</li>
+<li>Onboarding new team members</li>
+<li>Litigation / legal discovery</li>
+</ul>
+<p><strong><span style="color:#ffb300;font-weight:bold;">Auditing</span></strong></p>
+<p>Regulators increasingly demand <span style="color:#00e5ff;">model cards</span> — structured documentation of:</p>
+<ul>
+<li>Intended use and out-of-scope uses</li>
+<li>Training data description and limitations<br>
+</li>
+<li>Performance metrics across demographic groups</li>
+<li>Known biases and mitigation strategies</li>
+</ul>
+<p><strong><span style="color:#ffb300;font-weight:bold;">Compliance</span></strong></p>
+<ul>
+<li><strong>GDPR (EU):</strong> Right to explanation for automated decisions; data minimisation; purpose limitation</li>
+<li><strong>HK PDPO:</strong> Personal Data (Privacy) Ordinance — same principles applied locally; consent and data retention obligations</li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>What to document — minimum requirements:</strong></p>
+<div class="terminal-box">
+<pre><code>DOCUMENTATION CHECKLIST:
+□ Training data: source, version, date range
+□ Data preprocessing pipeline (reproducible)
+□ Model architecture + hyperparameters
+□ Performance at deployment (baseline)
+□ Evaluation methodology used
+□ Known limitations and biases
+□ Monitoring schedule + thresholds
+□ Retraining history with dates + triggers
+□ Model version control (git tags)
+□ Stakeholder sign-off records
+□ Retirement criteria (pre-defined)</code></pre>
+</div>
+<div class="amber-box" style="margin-top:0.5em;">
+<p><strong>EU AI Act (2024):</strong></p>
+<p>High-risk AI systems (credit scoring, employment, healthcare, law enforcement) require:</p>
+<ul>
+<li><span style="color:#ffb300;">Continuous monitoring logs</span></li>
+<li><span style="color:#ffb300;">Human oversight mechanisms</span></li>
+<li><span style="color:#ffb300;">Conformity assessments</span> before deployment</li>
+<li>Incident reporting within 15 days</li>
+</ul>
+<p><em>Non-compliance: fines up to €30M or 6% global revenue.</em></p>
+</div>
+</div></div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.3em;">
+<p><em>McCue (2015), Ch. 13.</em></p>
+</div>
+</section>
+<section id="case-study-vent.io-ucsd-health" class="slide level2 scrollable smaller">
+<h2>CASE STUDY: VENT.IO @ UCSD HEALTH</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<!-- IMAGE: ICU clinical decision support dashboard hospital — search: "ICU clinical decision support dashboard hospital" -->
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; LOADING CLINICAL AI CASE STUDY…</span></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Model Background:</strong></p>
+<ul>
+<li><strong>Task:</strong> Real-time prediction of mechanical ventilation need in ICU patients</li>
+<li><strong>Training data:</strong> UCSD Health EHR — adult ICU patients</li>
+<li><strong>Features:</strong> Vital signs, labs, medications, nursing assessments (time-series)</li>
+<li><strong>Algorithm:</strong> Gradient boosting with temporal features</li>
+</ul>
+<p><strong>Deployment Performance:</strong></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 35%">
+<col style="width: 25%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Phase</th>
+<th>AUC</th>
+<th>Status</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Internal validation</td>
+<td>0.931</td>
+<td>Development</td>
+</tr>
+<tr class="even">
+<td>Prospective deployment</td>
+<td>0.908</td>
+<td><span style="color:#39ff14;">Production ✓</span></td>
+</tr>
+<tr class="odd">
+<td>MIMIC-IV external</td>
+<td>0.730</td>
+<td><span style="color:#ff3333;">ALERT ❌</span></td>
+</tr>
+<tr class="even">
+<td>Post-fine-tuning</td>
+<td>0.873</td>
+<td><span style="color:#39ff14;">Restored ✓</span></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Alert threshold:</strong> AUC ≥ 0.85</p>
+<p>The drop to 0.73 on external data triggered the <span style="color:#00e5ff;">Physician-in-the-loop Continuous Care Pathway (PCCP)</span> protocol.</p>
+</div><div class="column" style="width:50%;">
+<p><strong>Monitoring Trigger Chain:</strong></p>
+<div class="terminal-box">
+<pre><code>[Prospective Deployment]
+ AUC = 0.908 &gt; threshold ✓
+         ↓
+ MIMIC-IV External Validation
+ AUC = 0.730 &lt; threshold 0.85
+         ↓
+[ALERT: PCCP TRIGGERED]
+         ↓
+ Fine-tuning on target domain data
+         ↓
+ AUC = 0.873 &gt; threshold ✓
+         ↓
+[MODEL RE-VALIDATED — CONTINUE]</code></pre>
+</div>
+<div class="amber-box" style="margin-top:0.5em;">
+<p><strong>Key Lessons:</strong></p>
+<ol type="1">
+<li><span style="color:#ffb300;font-weight:bold;">Pre-defined retraining triggers</span> = automated response without human delay</li>
+<li><span style="color:#ffb300;font-weight:bold;">External validation</span> is part of ongoing monitoring — not just development</li>
+<li><span style="color:#ffb300;font-weight:bold;">Domain-specific fine-tuning</span> (not full retraining) was sufficient</li>
+<li><span style="color:#ffb300;font-weight:bold;">Governance framework</span> (PCCP) enabled sustainable deployment</li>
+</ol>
+<p><em>“Pre-defined retraining triggers + governance = sustainable deployment”</em></p>
+</div>
+</div></div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.3em;">
+<p><em>Lam et al.&nbsp;(2024). Development, deployment, and continuous monitoring of a ML model to predict respiratory failure. JAMIA Open, 7(4), ooae141. https://doi.org/10.1093/jamiaopen/ooae141</em></p>
+</div>
+</section>
+<section id="risk-protocol-definition" class="slide level2 scrollable smaller">
+<h2>RISK PROTOCOL: DEFINITION</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; INITIALISING RISK-BASED DEPLOYMENT MODULE…</span></p>
+<div class="amber-box" style="font-size:1.05em; padding:1em;">
+<blockquote>
+<p><strong>“Calibrate deployment rigor, monitoring intensity, and rollout speed to the <span style="color:#ffb300;">risk level</span> of the use case.”</strong></p>
+</blockquote>
+</div>
+<p><strong>Core Principle:</strong> <span style="color:#00e5ff;font-weight:bold;">NOT all models need the same safeguards.</span></p>
+<p>Risk-based deployment means right-sizing your deployment process to the potential harm of failure:</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<table class="caption-top">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 32%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Use Case</th>
+<th>Risk Level</th>
+<th>Implication</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Playlist recommendation</td>
+<td><span style="color:#39ff14;">LOW</span></td>
+<td>Fast deploy, minimal monitoring</td>
+</tr>
+<tr class="even">
+<td>Product search ranking</td>
+<td><span style="color:#39ff14;">LOW-MEDIUM</span></td>
+<td>Standard monitoring</td>
+</tr>
+<tr class="odd">
+<td>Fraud detection</td>
+<td><span style="color:#ffb300;">MEDIUM-HIGH</span></td>
+<td>Phased rollout + alerts</td>
+</tr>
+<tr class="even">
+<td>Loan approval</td>
+<td><span style="color:#ffb300;">HIGH</span></td>
+<td>Shadow mode + audit</td>
+</tr>
+<tr class="odd">
+<td>Clinical diagnostic AI</td>
+<td><span style="color:#ff3333;">VERY HIGH</span></td>
+<td>Phased + shadow + regulatory approval</td>
+</tr>
+<tr class="even">
+<td>Criminal justice AI</td>
+<td><span style="color:#ff3333;">VERY HIGH</span></td>
+<td>Regulatory oversight + fairness audit</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:50%;">
+<p><strong>Why risk calibration matters:</strong></p>
+<ul>
+<li>Over-engineering low-risk deployments wastes resources and slows innovation</li>
+<li>Under-engineering high-risk deployments causes harm, legal liability, and reputational damage</li>
+<li>Risk level affects: rollout strategy, monitoring frequency, alert thresholds, documentation requirements, regulatory obligations</li>
+</ul>
+<div class="terminal-box">
+<p><code>RISK CALIBRATION EQUATION:</code><br>
+<code>Deployment Rigor =</code><br>
+<code>f(Impact of Failure × Uncertainty)</code></p>
+</div>
+</div></div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.3em;">
+<p><em>McCue (2015), Ch. 13. | Piorkowski, D., Hind, M., &amp; Richards, J. (2024). Quantitative AI risk assessments. https://doi.org/10.48550/arXiv.2209.06317</em></p>
+</div>
+</section>
+<section id="risk-matrix-22-quadrant" class="slide level2 scrollable smaller">
+<h2>RISK MATRIX: 2×2 QUADRANT</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<!-- IMAGE: Risk assessment matrix 2x2 impact uncertainty quadrant — search: "risk assessment matrix 2x2 impact uncertainty quadrant" -->
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; RENDERING RISK QUADRANT MATRIX…</span></p>
+<div class="columns">
+<div class="column" style="width:60%;">
+<table class="caption-top">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 45%">
+<col style="width: 48%">
+</colgroup>
+<thead>
+<tr class="header">
+<th></th>
+<th><span style="color:#00e5ff;">Low Uncertainty</span></th>
+<th><span style="color:#ff3333;">High Uncertainty</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong><span style="color:#ffb300;">High Impact</span></strong></td>
+<td><strong>Standard monitoring</strong> Churn prediction, targeted marketing</td>
+<td><strong>Phased rollout + intensive monitoring</strong> Credit scoring, clinical AI, hiring models</td>
+</tr>
+<tr class="even">
+<td><strong><span style="color:#39ff14;">Low Impact</span></strong></td>
+<td><strong>Fast deploy, minimal monitoring</strong> Product search ranking, playlist recommendation</td>
+<td><strong>Controlled pilot</strong> New content recommendation, experimental features</td>
+</tr>
+</tbody>
+</table>
+<p><strong>How to classify your model:</strong></p>
+<ul>
+<li><span style="color:#ffb300;">Impact</span> = severity of harm if the model fails (financial, safety, fairness, reputational)</li>
+<li><span style="color:#00e5ff;">Uncertainty</span> = how well-understood the deployment environment is relative to training conditions</li>
+</ul>
+</div><div class="column" style="width:40%;">
+<p><strong>Quadrant Action Plans:</strong></p>
+<div class="terminal-box">
+<pre><code>HIGH IMPACT + LOW UNCERTAINTY:
+→ Standard rollout
+→ Automated monitoring
+→ Quarterly audit
+
+HIGH IMPACT + HIGH UNCERTAINTY:
+→ Shadow mode first
+→ Phased rollout (10%→50%→100%)
+→ Real-time monitoring
+→ Fairness audit
+→ Regulatory clearance
+
+LOW IMPACT + LOW UNCERTAINTY:
+→ Big bang deploy
+→ Batch monitoring weekly
+→ Annual review
+
+LOW IMPACT + HIGH UNCERTAINTY:
+→ Controlled pilot (5%)
+→ A/B test with clear metrics
+→ Expand if results hold</code></pre>
+</div>
+</div></div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.3em;">
+<p><em>Piorkowski et al.&nbsp;(2024). https://doi.org/10.48550/arXiv.2209.06317 | McCue (2015), Ch. 13.</em></p>
+</div>
+</section>
+<section id="risk-scanner-four-categories" class="slide level2 scrollable smaller">
+<h2>RISK SCANNER: FOUR CATEGORIES</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; RISK IDENTIFICATION SCAN RUNNING…</span></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="terminal-box">
+<p><strong><span style="color:#ffb300;font-weight:bold;">1. DATA RISK</span></strong></p>
+<p>Definition: Risks from the training data itself</p>
+<p>Examples: • Stale data (pre-COVID model in 2025) • Biased training data (skewed demographics) • Insufficient volume (rare event models) • Label quality issues • Data leakage (future info in training) • Privacy violations in data collection</p>
+</div>
+<div class="terminal-box" style="margin-top:0.5em;">
+<p><strong><span style="color:#ffb300;font-weight:bold;">2. MODEL RISK</span></strong></p>
+<p>Definition: Risks from the model itself</p>
+<p>Examples: • Overfitting to training distribution • Inappropriate algorithm for domain • Unstable predictions near decision boundary • Lack of interpretability in regulated domain • Hyperparameter sensitivity</p>
+</div>
+</div><div class="column" style="width:50%;">
+<div class="terminal-box">
+<p><strong><span style="color:#ffb300;font-weight:bold;">3. OPERATIONAL RISK</span></strong></p>
+<p>Definition: Risks from infrastructure and operations</p>
+<p>Examples: • Infrastructure failure / downtime • Latency exceeding SLA • Integration failures with upstream data • Version mismatch (model vs.&nbsp;feature pipeline) • Security vulnerabilities (adversarial inputs) • Human error in deployment process</p>
+</div>
+<div class="terminal-box" style="margin-top:0.5em;">
+<p><strong><span style="color:#ff3333;font-weight:bold;">4. ETHICAL / COMPLIANCE RISK</span></strong></p>
+<p>Definition: Risks from fairness, privacy, and regulation</p>
+<p>Examples: • Differential impact across demographic groups • GDPR / PDPO non-compliance • Lack of human oversight for high-risk decisions • Violation of sector-specific regulation (HIPAA, FCA) • Transparency / explainability failures</p>
+<p>CASE: Amazon Rekognition (commercial deployment) → Higher error rates for women + darker-skinned subjects → Discovered post-deployment via academic audit</p>
+</div>
+</div></div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.3em;">
+<p><em>Piorkowski et al.&nbsp;(2024). https://doi.org/10.48550/arXiv.2209.06317</em></p>
+</div>
+</section>
+<section id="risk-scoring-template" class="slide level2 scrollable smaller">
+<h2>RISK SCORING: TEMPLATE</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; LOADING RISK ASSESSMENT TEMPLATE…</span></p>
+<p><strong>Risk Assessment Matrix — complete before deployment:</strong></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 13%">
+<col style="width: 17%">
+<col style="width: 21%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Risk Category</th>
+<th>Risk Description</th>
+<th>Likelihood (1–5)</th>
+<th>Impact (1–5)</th>
+<th>Risk Score (L×I)</th>
+<th>Mitigation Strategy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span style="color:#ffb300;">Data Risk</span></td>
+<td>Training data 2015–2019 only; post-2020 patterns not captured</td>
+<td>4</td>
+<td>5</td>
+<td><span style="color:#ff3333;font-weight:bold;">20</span></td>
+<td>Augment with 2020–2023 data; schedule annual full retraining</td>
+</tr>
+<tr class="even">
+<td><span style="color:#ffb300;">Model Risk</span></td>
+<td>Gender imbalance in training set → biased outcomes</td>
+<td>3</td>
+<td>5</td>
+<td><span style="color:#ff3333;font-weight:bold;">15</span></td>
+<td>Fairness audit pre-deployment; demographic parity monitoring</td>
+</tr>
+<tr class="odd">
+<td><span style="color:#00e5ff;">Operational Risk</span></td>
+<td>Integration with legacy CRM system unstable</td>
+<td>3</td>
+<td>3</td>
+<td><span style="color:#ffb300;">9</span></td>
+<td>API wrapper + fallback rule-based system</td>
+</tr>
+<tr class="even">
+<td><span style="color:#ff3333;">Ethical Risk</span></td>
+<td>Regulatory framework may change (EU AI Act 2024)</td>
+<td>2</td>
+<td>4</td>
+<td><span style="color:#ffb300;">8</span></td>
+<td>Legal review; modular architecture for compliance updates</td>
+</tr>
+<tr class="odd">
+<td><span style="color:#00e5ff;">Data Quality</span></td>
+<td>Input feature null rate &gt;5% in some regions</td>
+<td>2</td>
+<td>3</td>
+<td><span style="color:#39ff14;">6</span></td>
+<td>Imputation pipeline; alert if null rate &gt; 8%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Risk Score Interpretation:</strong></p>
+<div class="terminal-box">
+<pre><code>Score 20–25: CRITICAL    → Do not deploy without mitigation
+Score 12–19: HIGH        → Phased rollout; intensive monitoring required
+Score  6–11: MEDIUM      → Standard monitoring; document and track
+Score  1– 5: LOW         → Fast deploy; routine monitoring</code></pre>
+</div>
+<p><em><span style="color:#00e5ff;font-style:italic;">Students will complete 2 rows of this template in Exercise 2.</span></em></p>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.3em;">
+<p><em>Piorkowski et al.&nbsp;(2024). https://doi.org/10.48550/arXiv.2209.06317 | McCue (2015), Ch. 13.</em></p>
+</div>
+</section>
+<section id="deployment-strategies-5-modes" class="slide level2 scrollable smaller">
+<h2>DEPLOYMENT STRATEGIES: 5 MODES</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; SCANNING DEPLOYMENT STRATEGY OPTIONS…</span></p>
+<ol type="1">
+<li><p><strong><span style="color:#ffb300;font-weight:bold;">Big Bang</span></strong> — All users switched to new model simultaneously.<br>
+<em>Speed: Fastest | Risk: Highest | Rollback: Hardest</em><br>
+Use when: low-risk model, well-tested, fast rollback available</p></li>
+<li><p><strong><span style="color:#ffb300;font-weight:bold;">Phased Rollout</span></strong> — Deploy region by region, segment by segment (e.g., 10% → 25% → 50% → 100%).<br>
+<em>Speed: Moderate | Risk: Moderate | Rollback: Manageable</em><br>
+Use when: medium-high risk, want to validate performance before full exposure</p></li>
+<li><p><strong><span style="color:#ffb300;font-weight:bold;">Shadow Mode</span></strong> — New model runs in parallel; its outputs are logged but NOT acted upon. Production uses old model.<br>
+<em>Speed: Slow | Risk: Minimal | Rollback: Trivial</em><br>
+Use when: very high stakes, need extended real-world validation before any live decisions</p></li>
+<li><p><strong><span style="color:#ffb300;font-weight:bold;">A/B Testing</span></strong> — Split users: control group (old model) vs.&nbsp;treatment group (new model). Compare statistically.<br>
+<em>Speed: Moderate | Risk: Low-Medium | Rollback: Easy</em><br>
+Use when: want statistical confidence before full deployment; clear primary metric defined</p></li>
+<li><p><strong><span style="color:#ffb300;font-weight:bold;">Canary Deployment</span></strong> — Route a small % of traffic (1–5%) to new model first; monitor intensively; expand if stable.<br>
+<em>Speed: Moderate-Slow | Risk: Low | Rollback: Easy</em><br>
+Use when: infrastructure risk is the primary concern; want to catch technical failures early</p></li>
+</ol>
+<p><strong>Risk Tolerance vs.&nbsp;Deployment Speed Matrix:</strong></p>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th>Strategy</th>
+<th>Risk Tolerance</th>
+<th>Deployment Speed</th>
+<th>Monitoring Intensity</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Big Bang</td>
+<td>High</td>
+<td>Very Fast</td>
+<td>Low</td>
+</tr>
+<tr class="even">
+<td>Canary</td>
+<td>Low-Medium</td>
+<td>Slow</td>
+<td>Very High</td>
+</tr>
+<tr class="odd">
+<td>A/B Test</td>
+<td>Medium</td>
+<td>Moderate</td>
+<td>High</td>
+</tr>
+<tr class="even">
+<td>Phased</td>
+<td>Medium</td>
+<td>Moderate</td>
+<td>Medium</td>
+</tr>
+<tr class="odd">
+<td>Shadow</td>
+<td>Very Low</td>
+<td>Very Slow</td>
+<td>Medium</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="shadow_mode-parallel-execution" class="slide level2 scrollable smaller">
+<h2>SHADOW_MODE: PARALLEL EXECUTION</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; SHADOW MODE PROTOCOL: EXECUTING…</span></p>
+<div class="terminal-box">
+
+<pre style="font-family: 'Courier New', monospace; font-size: 1em; line-height: 1.4;">
+                    ┌──────────────────────┐
+                    │     User Request     │
+                    └──────────┬───────────┘
+                               │
+               ┌───────────────┴──────────────────┐
+               ▼                                  ▼
+    ┌─────────────────────┐           ┌─────────────────────┐
+    │    OLD MODEL (v1)   │           │    NEW MODEL (v2)   │
+    │  [PRODUCTION]       │           │  [SHADOW]           │
+    └──────────┬──────────┘           └──────────┬──────────┘
+               │                                 │
+               ▼                                 ▼
+     Production Decision                  Output LOGGED only
+       → Sent to User                   → NOT acted upon
+                                        → Compared to v1
+
+                          ┌──────────────────────────┐
+                          │  Data Scientists analyse │
+                          │  shadow outputs daily:   │
+                          │  • Agreement rate        │
+                          │  • Edge case differences │
+                          │  • Performance on labels │
+                          └──────────────────────────┘
+</pre>
+</div>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><strong>When to use Shadow Mode:</strong></p>
+<ul>
+<li>High-stakes models where live errors cause irreversible harm (clinical, financial, legal)</li>
+<li>New model uses significantly different architecture</li>
+<li>Regulatory approval required before live use</li>
+<li>Team needs extended confidence-building period</li>
+</ul>
+<p><strong>Transition Criteria:</strong><br>
+Shadow-run for <span style="color:#ffb300;">N consecutive days</span> meeting agreement threshold before any live traffic is routed to new model.</p>
+</div><div class="column" style="width:45%;">
+<div class="amber-box">
+<p><strong>Real Example:</strong></p>
+<p><strong>Google Search Ranking</strong></p>
+<p>New ranking models shadow-run for <span style="color:#ffb300;">weeks to months</span> before any live traffic is redirected. Outputs are compared against production rankings across billions of queries. Only after sustained agreement and quality metrics are met does the new model begin receiving live traffic — initially via canary, then phased rollout.</p>
+<p><em>Scale of shadow operation: ~8.5 billion queries/day.</em></p>
+</div>
+</div></div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.3em;">
+<p><em>McCue (2015), Ch. 13. | Piorkowski et al.&nbsp;(2024). https://doi.org/10.48550/arXiv.2209.06317</em></p>
+</div>
+</section>
+<section id="ab-test-statistical-framework" class="slide level2 scrollable smaller">
+<h2>A/B TEST: STATISTICAL FRAMEWORK</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; A/B TEST FRAMEWORK INITIALISING…</span></p>
+<p><strong>Framework for statistically rigorous A/B testing in model deployment:</strong></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Steps:</strong></p>
+<ol type="1">
+<li><span style="color:#ffb300;font-weight:bold;">Split population</span> — random assignment, e.g., 90% control (old model) / 10% treatment (new model)</li>
+<li><span style="color:#ffb300;font-weight:bold;">Define primary metric</span> — e.g., click-through rate, 7-day retention, AUC on live labels</li>
+<li><span style="color:#ffb300;font-weight:bold;">Set significance parameters</span>:
+<ul>
+<li>α = 0.05 (5% false positive rate)</li>
+<li>Minimum Detectable Effect (MDE): smallest difference that matters</li>
+<li>Required sample size (power calculation: β = 0.20, power = 80%)</li>
+</ul></li>
+<li><span style="color:#ffb300;font-weight:bold;">Run for pre-defined duration</span> — never stop early based on peeking at results (p-hacking)</li>
+<li><span style="color:#ffb300;font-weight:bold;">Analyse and decide</span> — apply t-test or equivalent; compare to α threshold</li>
+</ol>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb13"><pre class="sourceCode numberSource python number-lines code-with-copy"><code class="sourceCode python"><span id="cb13-1"><a href=""></a><span class="co"># A/B test significance check</span></span>
+<span id="cb13-2"><a href=""></a><span class="im">from</span> scipy <span class="im">import</span> stats</span>
+<span id="cb13-3"><a href=""></a></span>
+<span id="cb13-4"><a href=""></a>control_outcomes <span class="op">=</span> [...]    <span class="co"># Old model outcomes</span></span>
+<span id="cb13-5"><a href=""></a>treatment_outcomes <span class="op">=</span> [...]  <span class="co"># New model outcomes</span></span>
+<span id="cb13-6"><a href=""></a></span>
+<span id="cb13-7"><a href=""></a>t_stat, p_value <span class="op">=</span> stats.ttest_ind(</span>
+<span id="cb13-8"><a href=""></a>    control_outcomes,</span>
+<span id="cb13-9"><a href=""></a>    treatment_outcomes</span>
+<span id="cb13-10"><a href=""></a>)</span>
+<span id="cb13-11"><a href=""></a><span class="cf">if</span> p_value <span class="op">&lt;</span> <span class="fl">0.05</span>:</span>
+<span id="cb13-12"><a href=""></a>    <span class="bu">print</span>(<span class="ss">f"Significant! p=</span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">"</span>)</span>
+<span id="cb13-13"><a href=""></a>    <span class="bu">print</span>(<span class="st">"→ Deploy new model"</span>)</span>
+<span id="cb13-14"><a href=""></a><span class="cf">else</span>:</span>
+<span id="cb13-15"><a href=""></a>    <span class="bu">print</span>(<span class="ss">f"Not significant (p=</span><span class="sc">{</span>p_value<span class="sc">:.4f}</span><span class="ss">)"</span>)</span>
+<span id="cb13-16"><a href=""></a>    <span class="bu">print</span>(<span class="st">"→ Keep old model"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div><div class="column" style="width:50%;">
+<div class="amber-box">
+<p><strong>Real Example: Spotify</strong></p>
+<p>New neural collaborative filtering recommendation model tested against existing collaborative filtering baseline:</p>
+<ul>
+<li><strong>Test design:</strong> 90% control / 10% treatment</li>
+<li><strong>Duration:</strong> 7 days (pre-specified)</li>
+<li><strong>Primary metric:</strong> 7-day retention rate</li>
+<li><strong>Result:</strong> +2.4% retention, p &lt; 0.01</li>
+</ul>
+<p>Decision: <span style="color:#39ff14;">Deploy new model</span> → began phased rollout over 3 weeks</p>
+</div>
+<p><strong>Common A/B Testing Pitfalls:</strong></p>
+<div class="terminal-box">
+<pre><code>❌ Stopping early (p-hacking)
+❌ Multiple testing without correction
+❌ Novelty effects inflating results
+❌ Network effects (treatment leaks
+   to control via social graph)
+❌ Seasonality bias (running tests
+   across holiday periods)</code></pre>
+</div>
+</div></div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.3em;">
+<p><em>McCue (2015), Ch. 13.</em></p>
+</div>
+</section>
+<section id="rollback-protocol-emergency-procedure" class="slide level2 scrollable smaller">
+<h2>ROLLBACK PROTOCOL: EMERGENCY PROCEDURE</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; LOADING ROLLBACK PROTOCOL…</span></p>
+<div class="red-box">
+
+<pre style="font-family: 'Courier New', monospace; font-size: 1em; line-height: 1.4;">
+╔══════════════════════════════════════════════════════════════╗
+║  [EMERGENCY] ROLLBACK PROTOCOL — 4 COMPONENTS                ║
+╠══════════════════════════════════════════════════════════════╣
+║                                                              ║
+║  1. TRIGGER CRITERIA                                         ║
+║     → Specific metric thresholds that auto-trigger rollback  ║
+║     → Example: AUC drops &gt;15% from baseline in &lt;48h          ║
+║     → Example: Error rate &gt; 5× baseline for 30 minutes       ║
+║     → Example: P99 latency &gt; 3× SLA threshold                ║
+║                                                              ║
+║  2. PROCEDURE                                                ║
+║     → Version control: tag all model artifacts (git, DVC)    ║
+║     → Container images: previous model image tagged + stored ║
+║     → Database: feature pipeline state snapshot at deploy    ║
+║     → Target: restore previous version in &lt;30 minutes        ║
+║                                                              ║
+║  3. OWNER                                                    ║
+║     → Designated person with rollback authority (on-call)    ║
+║     → Backup owner (24/7 coverage)                           ║
+║     → Escalation path if owner unavailable                   ║
+║                                                              ║
+║  4. COMMUNICATION PLAN                                       ║
+║     → Internal: engineering + business owner notified &lt;5 min ║
+║     → External: customer-facing notification if SLA breached ║
+║     → Post-mortem: within 48h of rollback completion         ║
+╚══════════════════════════════════════════════════════════════╝
+</pre>
+</div>
+<div class="amber-box" style="margin-top:0.5em;">
+<p><strong>Real Example: Meta Newsfeed Algorithm Rollback (2021)</strong></p>
+<p>After a major algorithm update reduced engagement metrics significantly, Meta’s pre-defined trigger criteria were met within hours. The rollback was completed within 48 hours using pre-tagged container versions — demonstrating how rollback infrastructure investments pay off.</p>
+</div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.3em;">
+<p><em>McCue (2015), Ch. 13. | Piorkowski et al.&nbsp;(2024). https://doi.org/10.48550/arXiv.2209.06317</em></p>
+</div>
+</section>
+<section id="exercise_02-risk-assessment" class="slide level2 scrollable smaller">
+<h2>[EXERCISE_02] RISK ASSESSMENT</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<div class="terminal-box" style="font-size:0.95em;">
+
+<pre style="font-family: 'Courier New', monospace; font-size: 1em; line-height: 1.4;">
+╔══════════════════════════════════════════════════════════════╗
+║  [EXERCISE_02] IN-CLASS: RISK ASSESSMENT  (11 minutes)       ║
+╠══════════════════════════════════════════════════════════════╣
+║                                                              ║
+║  SCENARIO:                                                   ║
+║  A Hong Kong insurance company wants to deploy an ML model   ║
+║  to AUTOMATICALLY APPROVE OR REJECT life insurance           ║
+║  applications — no human review in the loop.                 ║
+║                                                              ║
+║  Training data: 2018–2022 (pre-pandemic)                     ║
+║  Model: XGBoost classifier                                   ║
+║  Features: age, income, medical history, lifestyle factors   ║
+║  Jurisdiction: Hong Kong (PDPO applies; UK-style reg. frame) ║
+║                                                              ║
+║  YOUR TASK (8 min individual):                               ║
+║                                                              ║
+║  &gt; 1. Classify the risk level using the 2×2 Risk Matrix.     ║
+║       Which quadrant? Why? (2–3 sentences)                   ║
+║                                                              ║
+║  &gt; 2. Choose a DEPLOYMENT STRATEGY from the 5 options.       ║
+║       Justify your choice. (2–3 sentences)                   ║
+║                                                              ║
+║  &gt; 3. Complete 2 rows of the Risk Assessment Table:          ║
+║       [Category] [Description] [L] [I] [Score] [Mitigation]  ║
+║                                                              ║
+║  → 3 minutes: discuss with a partner.                        ║
+╚══════════════════════════════════════════════════════════════╝
+</pre>
+</div>
+<div style="font-size:0.72em; color:#00e5ff; margin-top:0.4em;">
+<p><em>Consider: What regulations apply? What is the cost of a wrong decision? Can this decision be reversed? What does PDPO require?</em></p>
+</div>
+</section>
+<section id="compliance-terminal-regulations" class="slide level2 scrollable smaller">
+<h2>COMPLIANCE TERMINAL: REGULATIONS</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; LOADING REGULATORY COMPLIANCE DATABASE…</span></p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="eu-ai-act-2024"><span style="color:#ffb300;">EU AI Act (2024)</span></h3>
+<p><em>First comprehensive AI regulation globally</em></p>
+<p><strong>Risk Classification:</strong></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 40%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Level</th>
+<th>Definition</th>
+<th>Examples</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span style="color:#ff3333;">Unacceptable</span></td>
+<td>Prohibited</td>
+<td>Social scoring, subliminal manipulation</td>
+</tr>
+<tr class="even">
+<td><span style="color:#ffb300;">High</span></td>
+<td>Strict requirements</td>
+<td>Credit, employment, healthcare AI</td>
+</tr>
+<tr class="odd">
+<td><span style="color:#39ff14;">Limited</span></td>
+<td>Transparency only</td>
+<td>Chatbots (disclose AI)</td>
+</tr>
+<tr class="even">
+<td><span style="color:#39ff14;">Minimal</span></td>
+<td>No requirements</td>
+<td>Spam filters, AI games</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Requirements for HIGH-RISK AI:</strong></p>
+<ul>
+<li>Conformity assessment before deployment</li>
+<li>Human oversight mechanisms</li>
+<li>Continuous monitoring logs</li>
+<li>Incident reporting within 15 business days</li>
+<li>Technical documentation maintained</li>
+</ul>
+<p><strong>Penalties:</strong> Up to €30M or 6% of global annual revenue</p>
+</div><div class="column" style="width:50%;">
+<h3 id="hk-pdpo"><span style="color:#00e5ff;">HK PDPO</span></h3>
+<p><em>Personal Data (Privacy) Ordinance</em></p>
+<p><strong>Six Data Protection Principles:</strong></p>
+<ol type="1">
+<li>Purpose and collection — data collected for lawful, specified purpose</li>
+<li>Accuracy and retention — kept accurate, not longer than necessary</li>
+<li>Use of data — only for collection purpose or directly related</li>
+<li>Security — technical and organisational safeguards</li>
+<li>Openness — individual’s rights to know about data use</li>
+<li>Access and correction — right to access and correct personal data</li>
+</ol>
+<p><strong>ML Implications:</strong></p>
+<ul>
+<li><span style="color:#00e5ff;">Data minimisation</span> — only collect features necessary for the model’s purpose</li>
+<li><span style="color:#00e5ff;">Purpose limitation</span> — cannot repurpose training data without new consent</li>
+<li><span style="color:#00e5ff;">Automated decision-making</span> — individuals may request human review</li>
+<li>Profiling with sensitive categories (health, ethnicity) requires enhanced safeguards</li>
+</ul>
+<div class="amber-box" style="margin-top:0.5em;">
+<p><strong>Dual-framework compliance</strong> required for HK companies operating in or serving EU markets — both PDPO and EU AI Act obligations must be met simultaneously.</p>
+</div>
+</div></div>
+</section>
+<section id="bias-scanner-active" class="slide level2 scrollable smaller">
+<h2>BIAS SCANNER: ACTIVE</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; INITIALISING FAIRNESS MONITORING MODULE…</span></p>
+<p><strong>Bias in ML is not static — it can emerge or <span style="color:#ff3333;font-weight:bold;">worsen post-deployment</span> as the deployment population’s demographics shift.</strong></p>
+<div class="columns">
+<div class="column" style="width:55%;">
+<p><strong>Key Fairness Metrics to Monitor:</strong></p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 28%">
+<col style="width: 39%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Metric</th>
+<th>Definition</th>
+<th>Formula</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span style="color:#ffb300;">Demographic Parity</span></td>
+<td>Positive prediction rate equal across groups</td>
+<td>P(ŷ=1|A=0) = P(ŷ=1|A=1)</td>
+</tr>
+<tr class="even">
+<td><span style="color:#ffb300;">Equalized Odds</span></td>
+<td>Equal TPR and FPR across groups</td>
+<td>TPR and FPR equal for all A</td>
+</tr>
+<tr class="odd">
+<td><span style="color:#ffb300;">Predictive Parity</span></td>
+<td>Equal precision across groups</td>
+<td>P(y=1|ŷ=1,A=0) = P(y=1|ŷ=1,A=1)</td>
+</tr>
+<tr class="even">
+<td><span style="color:#00e5ff;">Individual Fairness</span></td>
+<td>Similar individuals receive similar outcomes</td>
+<td>d(x,x’) small → d(ŷ,ŷ’) small</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Implementation:</strong></p>
+<ul>
+<li>Run fairness audits at deployment AND on a rolling basis (monthly/quarterly)</li>
+<li>Stratify performance metrics by protected attributes</li>
+<li>Use tools: <span style="color:#00e5ff;">IBM AI Fairness 360</span>, <span style="color:#00e5ff;">Microsoft Fairlearn</span>, <span style="color:#00e5ff;">Google What-If Tool</span></li>
+</ul>
+<p><strong>Note:</strong> Fairness metrics often conflict with each other — trade-offs must be explicitly documented and justified with domain experts.</p>
+</div><div class="column" style="width:45%;">
+<div class="amber-box">
+<p><strong>Case: COMPAS Recidivism Tool</strong></p>
+<p><em>Northpointe / Equivant</em></p>
+<p>Used by US courts to predict likelihood of reoffending to guide bail and sentencing decisions.</p>
+<p><strong>ProPublica Analysis (2016):</strong></p>
+<ul>
+<li>Black defendants: 2× more likely to be <span style="color:#ff3333;">falsely labelled high-risk</span></li>
+<li>White defendants: more likely to be <span style="color:#ff3333;">falsely labelled low-risk</span></li>
+<li>Overall accuracy: 65%</li>
+</ul>
+<p>The model was deployed with no ongoing fairness monitoring. The bias was only discovered through external investigative journalism.</p>
+<p><strong>Lesson:</strong></p>
+<p><span style="color:#ffb300;font-weight:bold;">Bias monitoring must be a STANDING COMPONENT of every deployment plan — not an afterthought.</span></p>
+<p><em>Retirement followed in multiple jurisdictions.</em></p>
+</div>
+</div></div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.3em;">
+<p><em>Piorkowski et al.&nbsp;(2024). https://doi.org/10.48550/arXiv.2209.06317</em></p>
+</div>
+</section>
+<section id="governance-framework-aim-prism" class="slide level2 scrollable smaller">
+<h2>GOVERNANCE FRAMEWORK: AIM-PRISM</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; LOADING AIM-PRISM GOVERNANCE FRAMEWORK…</span></p>
+<p><strong>AIM-PRISM</strong> — a comprehensive 8-component governance framework for sustainable ML deployment:</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span style="color:#ffb300; font-size:1.3em; font-family:'VT323',monospace;"><strong>A</strong></span></th>
+<th><span style="color:#ffb300; font-size:1.3em; font-family:'VT323',monospace;"><strong>I</strong></span></th>
+<th><span style="color:#ffb300; font-size:1.3em; font-family:'VT323',monospace;"><strong>M</strong></span></th>
+<th><span style="color:#ffb300; font-size:1.3em; font-family:'VT323',monospace;"><strong>P</strong></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong><span style="color:#ffb300;">Adaptability</span></strong></td>
+<td><strong><span style="color:#ffb300;">Integration</span></strong></td>
+<td><strong><span style="color:#ffb300;">Monitoring</span></strong></td>
+<td><strong><span style="color:#ffb300;">Predictive Capacity</span></strong></td>
+</tr>
+<tr class="even">
+<td>Model can update as environment changes; refresh strategies defined</td>
+<td>System integrates with existing workflows and data pipelines without disruption</td>
+<td>Continuous performance, data, and fairness tracking with alert protocols</td>
+<td>Anticipates future failure modes before they occur; proactive governance</td>
+</tr>
+</tbody>
+</table>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th><span style="color:#00e5ff; font-size:1.3em; font-family:'VT323',monospace;"><strong>R</strong></span></th>
+<th><span style="color:#00e5ff; font-size:1.3em; font-family:'VT323',monospace;"><strong>I</strong></span></th>
+<th><span style="color:#00e5ff; font-size:1.3em; font-family:'VT323',monospace;"><strong>S</strong></span></th>
+<th><span style="color:#00e5ff; font-size:1.3em; font-family:'VT323',monospace;"><strong>M</strong></span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong><span style="color:#00e5ff;">Responsiveness</span></strong></td>
+<td><strong><span style="color:#00e5ff;">Inclusivity</span></strong></td>
+<td><strong><span style="color:#00e5ff;">Security</span></strong></td>
+<td><strong><span style="color:#00e5ff;">Meaningful Interpretation</span></strong></td>
+</tr>
+<tr class="even">
+<td>Rapid response to detected issues; escalation paths defined and tested</td>
+<td>Deployment accounts for diverse user populations; fairness-by-design</td>
+<td>Model and data pipeline secured against adversarial inputs, data poisoning, model inversion</td>
+<td>Outputs are explainable and actionable for decision-makers; XAI methods applied</td>
+</tr>
+</tbody>
+</table>
+<div class="terminal-box" style="margin-top:0.5em;">
+<p><code>&gt; AIM-PRISM provides a STRUCTURED CHECKLIST for governance teams</code><br>
+<code>to audit any ML deployment against 8 dimensions.</code><br>
+<code>&gt; Use as both a pre-deployment assessment AND ongoing audit framework.</code></p>
+</div>
+<div style="font-size:0.6em; color:#1a7b1a; margin-top:0.3em;">
+<p><em>Al-Thani, M. G. (2025). The AIM-PRISM framework. AI, Machine Learning and Applications. https://doi.org/10.54364/aaiml.2025.53228</em></p>
+</div>
+</section>
+<section id="at2-in-class-exercise-deployment-i" class="slide level2 scrollable smaller">
+<h2>AT2: IN-CLASS EXERCISE — DEPLOYMENT (I)</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<div class="terminal-box" style="font-size:1em;">
+
+<pre style="font-family: 'Courier New', monospace; font-size: 1em; line-height: 1.4;">
+╔══════════════════════════════════════════════════════════════╗
+║  ADS320 AT2: IN-CLASS EXERCISE — WEEK 12                     ║
+╠══════════════════════════════════════════════════════════════╣
+║                                                              ║
+║  &gt; SYSTEM: Initialising Assessment Module...                 ║
+║  &gt; STATUS: READY                                             ║
+║                                                              ║
+║  FORMAT  : Individual | Handwritten | No notes               ║
+║  DURATION: 15 minutes                                        ║
+║  MARKS   : 5 questions × 2 marks = 10 marks total            ║
+║  SUBMIT  : Before leaving class today                        ║
+║                                                              ║
+║  COUNT   : Contributes to 5 selected AT2 exercises           ║
+║            (best 5 of all in-class exercises)                ║
+║                                                              ║
+║  &gt; Please write your:                                        ║
+║    - Full name                                               ║
+║    - Student ID                                              ║
+║    - Date                                                    ║
+║    on the answer sheet before beginning.                     ║
+║                                                              ║
+║  &gt; BEGIN WHEN INSTRUCTED                                     ║
+╚══════════════════════════════════════════════════════════════╝
+</pre>
+</div>
+<div style="font-size:0.78em; color:#39ff14; margin-top:0.5em;">
+<p><strong>Assessment covers:</strong> Model drift types · Refresh strategies · AUC degradation response · Shadow mode vs A/B testing · Risk quadrant classification</p>
+</div>
+</section>
+<section id="at2-question-bank" class="slide level2 scrollable smaller">
+<h2>AT2: QUESTION BANK</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<div class="terminal-box">
+
+<pre style="font-family: 'Courier New', monospace; font-size: 1em; line-height: 1.4;">
+╔══════════════════════════════════════════════════════════════╗
+║  AT2 QUESTIONS — Week 12: Deployment (I)                     ║
+╠══════════════════════════════════════════════════════════════╣
+║                                                              ║
+║  Q1 [2 marks]                                                ║
+║  Name and describe TWO types of model drift.                 ║
+║  For each type, provide ONE real-world example.              ║
+║                                                              ║
+║  Q2 [2 marks]                                                ║
+║  Complete the table: name all FOUR model refresh strategies, ║
+║  the primary condition that triggers each, and one           ║
+║  real-world context where each is appropriate.               ║
+║                                                              ║
+║  Q3 [2 marks]                                                ║
+║  A deployed fraud detection model's AUC dropped from         ║
+║  0.94 to 0.79 over one week. List TWO immediate actions      ║
+║  a data scientist should take. Justify each.                 ║
+║                                                              ║
+║  Q4 [2 marks]                                                ║
+║  Explain the difference between shadow mode deployment       ║
+║  and A/B testing. In which situation would you choose        ║
+║  shadow mode over A/B testing? Give a reason.                ║
+║                                                              ║
+║  Q5 [2 marks]                                                ║
+║  A Hong Kong company is deploying an ML model to screen      ║
+║  job applicants. Using the 2×2 risk matrix, classify         ║
+║  the risk level and justify in 2–3 sentences.                ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+</pre>
+</div>
+</section>
+<section id="system-summary-key-outputs" class="slide level2 scrollable smaller">
+<h2>SYSTEM SUMMARY: KEY OUTPUTS</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; COMPILING SESSION OUTPUTS…</span></p>
+<div class="terminal-box" style="font-size:1.05em; padding:1.2em;">
+
+<pre style="font-family: 'Courier New', monospace; font-size: 1em; line-height: 1.4;">
+╔══════════════════════════════════════════════════════════════╗
+║  ADS320 W12 — SESSION SUMMARY                                ║
+╠══════════════════════════════════════════════════════════════╣
+║                                                              ║
+║  [01] Monitoring is not optional —                           ║
+║       it is PART OF THE DEPLOYMENT CONTRACT.                 ║
+║       A model without monitoring is a liability.             ║
+║                                                              ║
+║  [02] Match refresh strategy to drift type and severity:     ║
+║       Virtual drift   → Prior re-balancing (cheapest)        ║
+║       Gradual drift   → Ensemble updating (smooth)           ║
+║       Streaming       → Incremental learning (continuous)    ║
+║       Severe drift    → Full retraining (clean restart)      ║
+║                                                              ║
+║  [03] Risk-based deployment = calibrate rigor to STAKES.     ║
+║       Playlist ≠ clinical AI.                                ║
+║       Use the 2×2 matrix. Choose the right strategy.         ║
+║                                                              ║
+║  [04] Governance + documentation =                           ║
+║       SUSTAINABLE vs FRAGILE deployment.                     ║
+║       Reproducibility · Auditability · Compliance.           ║
+║       AIM-PRISM provides the framework.                      ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+</pre>
+</div>
+<p><span style="color:#39ff14; font-family:'Share Tech Mono',monospace; font-size:0.85em;">&gt; SESSION COMPLETE. LOGGING OUT…</span></p>
+</section>
+<section id="next-session-deployment-ii" class="slide level2 scrollable smaller">
+<h2>NEXT SESSION: DEPLOYMENT (II)</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<div class="terminal-box">
+
+<pre style="font-family: 'Courier New', monospace; font-size: 1em; line-height: 1.4;">
+╔══════════════════════════════════════════════════════════════╗
+║  &gt; LOADING NEXT MODULE...                                    ║
+║  &gt; MODULE: ADS320 Week 13 — DEPLOYMENT (II)                  ║
+║  &gt; STATUS: QUEUED                                            ║
+╠══════════════════════════════════════════════════════════════╣
+║                                                              ║
+║  TOPIC: Visualization &amp; Reporting                            ║
+║                                                              ║
+║  CONTENT PREVIEW:                                            ║
+║  • Deployment report structure and key components            ║
+║  • Dashboard design for non-technical stakeholders           ║
+║  • Communicating model performance visually                  ║
+║  • Lift charts, gain charts, and business ROI reporting      ║
+║  • Final project preparation and wrap-up                     ║
+║                                                              ║
+║  READING:                                                    ║
+║  McCue (2015), Ch. 13 (complete)                             ║
+║                                                              ║
+║  AT2 EXERCISE W13:                                           ║
+║  Result visualizations and deployment report generation      ║
+║                                                              ║
+║  &gt; REMINDER: Submit today's AT2 exercise before leaving.     ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+</pre>
+</div>
+<div style="font-size:0.78em; color:#39ff14; margin-top:0.5em;">
+<p><strong>Prepare:</strong> Review your Week 12 notes. Bring any questions about monitoring or risk assessment strategies to Week 13. Next class is the last full content session before the final assessment.</p>
+</div>
+</section>
+<section id="bibliography-verified-sources" class="slide level2 scrollable smaller">
+<h2>BIBLIOGRAPHY: VERIFIED SOURCES</h2>
+<!-- IMAGE: Hong Kong Shue Yan University crest/logo — search: "Hong Kong Shue Yan University logo" -->
+<p><img data-src="hksyu_logo.png" class="absolute" style="top: 10px; right: 10px; width: 70px; "></p>
+<p><span style="color:#00e5ff; font-family:'Share Tech Mono',monospace;">&gt; ACCESSING REFERENCE DATABASE…</span></p>
+<div style="font-size:0.72em; font-family:'Share Tech Mono','Courier New',monospace; color:#39ff14; line-height:1.8;">
+<ol type="1">
+<li><p>McCue, C. (2015). <em>Data mining and predictive analysis: Intelligence gathering and crime analysis</em> (2nd ed.). Butterworth-Heinemann.</p></li>
+<li><p>Gama, J., Žliobaitė, I., Bifet, A., Pechenizkiy, M., &amp; Bouchachia, A. (2014). A survey on concept drift adaptation. <em>ACM Computing Surveys, 46</em>(4), Article 44. https://doi.org/10.1145/2523813</p></li>
+<li><p>Lam, J. Y., Lu, X., Shashikumar, S., Lee, Y. S., Miller, M., Pour, H., Boussina, A., Pearce, A., Malhotra, A., &amp; Nemati, S. (2024). Development, deployment, and continuous monitoring of a machine learning model to predict respiratory failure in critically ill patients. <em>JAMIA Open, 7</em>(4), ooae141. https://doi.org/10.1093/jamiaopen/ooae141</p></li>
+<li><p>Pulicharla, M. R. (2019). Detecting and addressing model drift: Automated monitoring and real-time retraining in ML pipelines. <em>World Journal of Advanced Research and Reviews, 3</em>(2). https://doi.org/10.30574/wjarr.2019.3.2.0189</p></li>
+<li><p>Studer, S., Bui, T., Drescher, C., Hanuschkin, A., Winkler, L., Peters, S., &amp; Müller, K.-R. (2021). Towards CRISP-ML(Q): A machine learning process model with quality assurance methodology. <em>Preprints</em>. https://doi.org/10.20944/preprints202103.0135.v1</p></li>
+<li><p>Piorkowski, D., Hind, M., &amp; Richards, J. (2024). Quantitative AI risk assessments: Opportunities and challenges. https://doi.org/10.48550/arXiv.2209.06317</p></li>
+<li><p>Al-Thani, M. G. (2025). The AIM-PRISM framework. <em>AI, Machine Learning and Applications</em>. https://doi.org/10.54364/aaiml.2025.53228</p></li>
+<li><p>Evidently AI. (2025). <em>Model monitoring for ML in production</em>. https://www.evidentlyai.com/ml-in-production/model-monitoring</p></li>
+</ol>
+</div>
+
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W119
+</script>
+<div id="exercise-loading-indicator" class="exercise-loading-indicator d-none d-flex align-items-center gap-2">
+<div id="exercise-loading-status" class="d-flex gap-2">
+
+</div>
+<div class="spinner-grow spinner-grow-sm">
+
+</div>
+</div>
+<script type="vfs-file">
+W10=
+</script>
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<p><img src="hksyu_logo.png" class="slide-logo"></p>
+<div class="footer footer-default">
+<p>ADS320 · Week 12 · Deployment (I) · Dr Ruiwu Niu</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="ADS320_W12_Deployment_I_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="ADS320_W12_Deployment_I_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="ADS320_W12_Deployment_I_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="ADS320_W12_Deployment_I_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="ADS320_W12_Deployment_I_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="ADS320_W12_Deployment_I_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="ADS320_W12_Deployment_I_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="ADS320_W12_Deployment_I_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="ADS320_W12_Deployment_I_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="ADS320_W12_Deployment_I_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="ADS320_W12_Deployment_I_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': false,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1700,
+
+        height: 900,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script type="ojs-module-contents">
+    eyJjb250ZW50cyI6W119
+    </script>
+    <script type="module">
+    if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+    window._ojs.paths.runtimeToDoc = "../../..";
+    window._ojs.paths.runtimeToRoot = "../../..";
+    window._ojs.paths.docToRoot = "";
+    window._ojs.selfContained = false;
+    window._ojs.runtime.interpretFromScriptTags();
+    </script>
+    
+    <script>
+      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
+      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
+      // slide changes (different for each slide format).
+      (function () {
+        // dispatch for htmlwidgets
+        function fireSlideEnter() {
+          const event = window.document.createEvent("Event");
+          event.initEvent("slideenter", true, true);
+          window.document.dispatchEvent(event);
+        }
+
+        function fireSlideChanged(previousSlide, currentSlide) {
+          fireSlideEnter();
+
+          // dispatch for shiny
+          if (window.jQuery) {
+            if (previousSlide) {
+              window.jQuery(previousSlide).trigger("hidden");
+            }
+            if (currentSlide) {
+              window.jQuery(currentSlide).trigger("shown");
+            }
+          }
+        }
+
+        // hookup for slidy
+        if (window.w3c_slidy) {
+          window.w3c_slidy.add_observer(function (slide_num) {
+            // slide_num starts at position 1
+            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
+          });
+        }
+
+      })();
+    </script>
+
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
